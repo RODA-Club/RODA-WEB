@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { track } from "@/lib/analytics";
 import { getAttribution } from "@/lib/attribution";
@@ -266,8 +267,9 @@ export function SignupForm() {
         <label htmlFor="f-ok" className={styles.consent}>
           <input id="f-ok" name="consentimiento" type="checkbox" required className={styles.check} />
           <span>
-            Acepto que RODA me contacte por mail o WhatsApp sobre el lanzamiento. Ver{" "}
-            <a href="/privacidad">política de privacidad</a>.
+            Acepto que RODA guarde estos datos y me contacte por mail o WhatsApp sobre el lanzamiento. Entiendo
+            que se alojan en servicios que pueden estar fuera de Argentina.{" "}
+            <Link href="/privacidad">Política de privacidad</Link>
           </span>
         </label>
 
@@ -280,6 +282,12 @@ export function SignupForm() {
         <button type="submit" className={`btn btnPrimary ${styles.submit}`} disabled={status === "sending"}>
           {status === "sending" ? "Enviando…" : SUBMIT_LABEL[tipo]}
         </button>
+
+        <p className={styles.legend}>
+          Podés pedir ver, corregir o borrar tus datos cuando quieras escribiendo a{" "}
+          <a href="mailto:roda.club.app@gmail.com">roda.club.app@gmail.com</a>. Más info en la{" "}
+          <Link href="/privacidad">política de privacidad</Link>.
+        </p>
       </form>
     </div>
   );

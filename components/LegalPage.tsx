@@ -1,9 +1,10 @@
 import Link from "next/link";
+import { LEGAL } from "@/lib/legal";
 import { Footer } from "./Footer";
 import styles from "./LegalPage.module.css";
 import { Logo } from "./Logo";
 
-export function LegalPage({ title }: { title: string }) {
+export function LegalPage({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <>
       <header className={styles.header}>
@@ -18,10 +19,8 @@ export function LegalPage({ title }: { title: string }) {
       </header>
       <main className={styles.main}>
         <h1 className="h2">{title}</h1>
-        <p className={styles.text}>[TEXTO LEGAL PENDIENTE]</p>
-        <p className={styles.contact}>
-          Consultas: <a href="mailto:roda.club.app@gmail.com">roda.club.app@gmail.com</a>
-        </p>
+        <p className={styles.updated}>Última actualización: {LEGAL.fecha}</p>
+        <div className={styles.body}>{children}</div>
       </main>
       <Footer />
     </>

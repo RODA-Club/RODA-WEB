@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { CONSENTIMIENTO_VERSION } from "./legal";
 import { BICIS, CANTIDADES, LOCAL_TIPOS, RITMOS_CICLISTA, RITMOS_GRUPO, ZONAS } from "./opciones";
 
 // Texto requerido / opcional. Los opcionales vacíos se guardan como null.
@@ -67,6 +68,8 @@ export function toRow(lead: Lead) {
     whatsapp: lead.whatsapp,
     zona: lead.zona,
     consentimiento: lead.consentimiento,
+    consentimiento_at: new Date().toISOString(),
+    consentimiento_version: CONSENTIMIENTO_VERSION,
     tipo_bici: lead.tipo !== "local" ? lead.tipo_bici : null,
     ritmo: lead.tipo === "ciclista" ? lead.ritmo : null,
     grupo_nombre: lead.tipo === "lider" ? lead.grupo_nombre : null,

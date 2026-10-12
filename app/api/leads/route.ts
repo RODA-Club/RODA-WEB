@@ -40,7 +40,16 @@ export async function POST(request: Request) {
   const supabase = createClient(url, key, {
     auth: { persistSession: false, autoRefreshToken: false },
   });
-  const { error } = await supabase.from("leads").upsert(toRow(parsed.data), { onConflict: "email,tipo" });
+  const row = toRow(parsed.data);
+  let { error } = await supabase.from("leads").upsert(row, { onConflict: "email,tipo" });
+
+  // Si todavía no se corrió 0002_consentimiento.sql, guardar igual el lead sin
+  // esas columnas antes que perderlo.
+  if (error?.code === "PGRST204") {
+    console.error("leads: faltan columnas de consentimiento, correr 0002_consentimiento.sql");
+    const { consentimiento_at: _at, consentimiento_version: _v, ...legacy } = row;
+    ({ error } = await supabase.from("leads").upsert(legacy, { onConflict: "email,tipo" }));
+  }
 
   if (error) {
     console.error("leads: error de Supabase", error.code, error.message);

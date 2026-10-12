@@ -162,3 +162,11 @@
   height: 1px;
   overflow: hidden;
 }
+
+.legend {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--texto-2);
+  overflow-wrap: anywhere;
+}

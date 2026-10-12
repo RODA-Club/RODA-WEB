@@ -20,6 +20,8 @@ create table if not exists public.leads (
   local_nombre     text,
   local_direccion  text,
   consentimiento   boolean not null check (consentimiento = true),
+  consentimiento_at      timestamptz,
+  consentimiento_version text,
   utm_source       text,
   utm_medium       text,
   utm_campaign     text,
