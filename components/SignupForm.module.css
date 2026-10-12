@@ -1,0 +1,140 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  background: var(--superficie);
+  padding: 6px;
+  border-radius: 999px;
+}
+
+.tab {
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 8px;
+  min-height: 48px;
+  font: 600 15px var(--font-texto);
+  cursor: pointer;
+  background: transparent;
+  color: var(--hueso);
+}
+
+.tabOn {
+  background: var(--lima);
+  color: var(--negro);
+}
+
+.form,
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--hueso);
+}
+
+.optional {
+  color: var(--texto-2);
+  font-weight: 400;
+}
+
+.control {
+  width: 100%;
+  background: var(--superficie);
+  color: var(--blanco);
+  border: 1px solid var(--borde-input);
+  border-radius: 14px;
+  padding: 14px 16px;
+  font: 16px var(--font-texto);
+  min-height: 52px;
+}
+
+.control:focus-visible {
+  outline-offset: 1px;
+}
+
+.consent {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--texto-3);
+  cursor: pointer;
+  padding: 6px 0;
+}
+
+.check {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  flex: none;
+  accent-color: var(--lima);
+}
+
+.submit {
+  font-size: 17px;
+  padding: 18px 24px;
+  min-height: 56px;
+}
+
+.done {
+  background: var(--superficie);
+  border: 1px solid var(--borde-input);
+  border-radius: 28px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.doneTitle {
+  font-family: var(--font-titulo);
+  font-style: italic;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--lima);
+}
+
+.doneText {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--hueso);
+}
+
+.doneFollow {
+  margin: 0;
+  font-size: 15px;
+  color: var(--texto-2);
+}
+
+.again {
+  align-self: flex-start;
+  font-size: 15px;
+  padding: 12px 18px;
+}

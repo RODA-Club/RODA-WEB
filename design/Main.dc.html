@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>RODA — Encontrá tu grupo</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,600;1,900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#141408}
+a{color:#C6FE04}a:hover{color:#F8FEBA}
+input::placeholder{color:#8A8A7A}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #FFFFFF; background: #141408; min-height: 100vh">
+
+  <!-- NAV -->
+  <header style="position: sticky; top: 0; z-index: 10; background: rgba(20,20,8,0.92); border-bottom: 1px solid #2A2A1C">
+    <div style="max-width: 1120px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px">
+      <a href="#inicio" aria-label="RODA, inicio" style="display: flex; align-items: center; min-height: 44px">
+        <svg role="img" aria-label="RODA" viewBox="-52.0 -828.3 3279.6 1076.6" style="height: 30px; width: auto; display: block"><path d="M28 0 149 688H570Q640 688 686.0 664.0Q732 640 754.5 600.5Q777 561 777 512Q777 448 757.5 401.0Q738 354 703.5 321.5Q669 289 623 268L711 0H466L402 231H290L249 0ZM317 384H462Q482 384 502.0 395.5Q522 407 535.0 427.0Q548 447 548 473Q548 499 534.0 515.0Q520 531 497 531H342Z" fill="#FFFFFF" transform="translate(0.0 0) scale(1 -1)"></path><g transform="translate(1251.0 -343.0) scale(16.945)"><g stroke="#FFFFFF" stroke-width="0.9" stroke-linecap="round"><line x1="0" y1="-2.4" x2="0" y2="-23" transform="rotate(0)"></line><line x1="0" y1="-2.4" x2="0" y2="-23" transform="rotate(30)"></line><line x1="0" y1="-2.4" x2="0" y2="-23" transform="rotate(60)"></line><line x1="0" y1="-2.4" x2="0" y2="-23" transform="rotate(90)"></line><line x1="0" y1="-2.4" x2="0" y2="-23" transform="rotate(120)"></line><line x1="0" y1="-2.4" x2="0" y2="-23" transform="rotate(150)"></line><line x1="0" y1="-2.4" x2="0" y2="-23" transform="rotate(180)"></line><line x1="0" y1="-2.4" x2="0" y2="-23" transform="rotate(210)"></line><line x1="0" y1="-2.4" x2="0" y2="-23" transform="rotate(240)"></line><line x1="0" y1="-2.4" x2="0" y2="-23" transform="rotate(270)"></line><line x1="0" y1="-2.4" x2="0" y2="-23" transform="rotate(300)"></line><line x1="0" y1="-2.4" x2="0" y2="-23" transform="rotate(330)"></line></g><circle r="23.6" fill="none" stroke="#C6FE04" stroke-width="3"></circle><circle r="2.8" fill="#FFFFFF"></circle></g><path d="M28 0 149 688H437Q592 688 674.0 623.5Q756 559 756 425Q756 404 754.5 381.5Q753 359 748 334Q728 220 675.5 146.0Q623 72 540.5 36.0Q458 0 346 0ZM278 165H351Q388 165 416.0 175.0Q444 185 464.0 204.0Q484 223 497.0 251.0Q510 279 516 314Q523 352 526.0 371.5Q529 391 530.0 400.5Q531 410 531 416Q531 450 518.5 474.0Q506 498 480.5 510.5Q455 523 414 523H341Z" fill="#FFFFFF" transform="translate(1656.0 0) scale(1 -1)"></path><path d="M-37 0 337 688H594L722 0H495L483 97H241L195 0ZM314 251H464L451 361L447 395Q445 412 442.5 428.5Q440 445 438 462L434 496H430Q420 474 409.0 451.5Q398 429 387.5 406.5Q377 384 366 361Z" fill="#FFFFFF" transform="translate(2424.0 0) scale(1 -1)"></path><polygon fill="#C6FE04" points="19.6,122.3 3167.6,122.3 3156.0,188.3 8.0,188.3"></polygon></svg>
+      </a>
+      <nav aria-label="Principal" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end">
+        <a href="#lideres" style="color: #EBEAE4; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 10px">Líderes</a>
+        <a href="#locales" style="color: #EBEAE4; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 10px">Locales</a>
+        <a href="#sumate" style="background: #C6FE04; color: #141408; text-decoration: none; font-size: 15px; font-weight: 600; padding: 12px 18px; border-radius: 999px">Sumate</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="inicio" style="max-width: 1120px; margin: 0 auto; padding: 72px 20px 88px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
+    <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+      <p style="margin: 0; font-family: Archivo, sans-serif; font-style: italic; font-weight: 600; font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: #C6FE04">Piloto 2027 · Buenos Aires</p>
+      <h1 style="margin: 0; font-family: Archivo, sans-serif; font-style: italic; font-weight: 900; font-size: clamp(44px, 7.5vw, 84px); line-height: 0.98; letter-spacing: -0.01em; text-transform: uppercase">Encontrá tu grupo. <span style="color: #C6FE04">Salí a rodar.</span></h1>
+      <p style="margin: 0; font-size: 19px; line-height: 1.55; color: #EBEAE4; max-width: 520px">RODA te conecta con grupos de ciclistas de tu nivel, tu ritmo y tu zona. Antes de ir ya sabés a qué velocidad van, cuántos son y dónde se juntan. Nadie queda atrás.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 8px">
+        <a href="#sumate" onClick="{{pickCiclista}}" style="background: #C6FE04; color: #141408; text-decoration: none; font-weight: 600; font-size: 17px; padding: 16px 26px; border-radius: 999px">Anotate en la lista</a>
+        <a href="#sumate" onClick="{{pickLider}}" style="color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 17px; padding: 15px 24px; border-radius: 999px; border: 1.5px solid #5A5A48">Organizo un grupo</a>
+      </div>
+      <p style="margin: 0; font-size: 14px; color: #A8A898">Gratis para ciclistas y líderes de grupo.</p>
+    </div>
+
+    <!-- Tarjeta de salida (ejemplo) -->
+    <div style="flex: 1 1 340px; min-width: 0; display: flex; justify-content: center">
+      <div style="width: 100%; max-width: 360px; display: flex; flex-direction: column; gap: 16px; align-items: center">
+      <div aria-label="Ejemplos de salidas en la app" role="img" style="width: 100%; box-sizing: border-box; min-height: 470px; background: #1E1E12; border: 1px solid #33331F; border-radius: 28px; padding: 22px; display: flex; flex-direction: column; gap: 18px; box-shadow: 0 30px 80px rgba(0,0,0,0.45); opacity: {{card.opacity}}; transition: opacity 280ms ease">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px">
+          <span style="font-family: Archivo, sans-serif; font-style: italic; font-weight: 600; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #A8A898">{{card.when}}</span>
+          <span style="{{card.badgeStyle}}">{{card.badge}}</span>
+        </div>
+        <div style="font-family: Archivo, sans-serif; font-style: italic; font-weight: 900; font-size: 30px; line-height: 1.05; text-transform: uppercase">{{card.title}}</div>
+        <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+          <div style="background: #141408; border-radius: 16px; padding: 12px; display: flex; flex-direction: column; gap: 4px">
+            <span style="font-size: 12px; color: #A8A898">Ritmo</span>
+            <span style="font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums">{{card.pace}}</span>
+            <span style="font-size: 12px; color: #A8A898">km/h</span>
+          </div>
+          <div style="background: #141408; border-radius: 16px; padding: 12px; display: flex; flex-direction: column; gap: 4px">
+            <span style="font-size: 12px; color: #A8A898">Distancia</span>
+            <span style="font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums">{{card.km}}</span>
+            <span style="font-size: 12px; color: #A8A898">km</span>
+          </div>
+          <div style="background: #141408; border-radius: 16px; padding: 12px; display: flex; flex-direction: column; gap: 4px">
+            <span style="font-size: 12px; color: #A8A898">Van</span>
+            <span style="font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums">{{card.spots}}</span>
+            <span style="font-size: 12px; color: #A8A898">cupo</span>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: #EBEAE4">
+          <div style="display: flex; gap: 10px; align-items: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6FE04" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>Encuentro: {{card.meet}}</div>
+          <div style="display: flex; gap: 10px; align-items: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6FE04" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"></path><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"></path></svg>Parada de café a mitad de ruta</div>
+          <div style="display: flex; gap: 10px; align-items: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6FE04" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M19 8v6M22 11h-6"></path></svg>{{card.extra}}</div>
+        </div>
+        <div style="margin-top: auto; background: #C6FE04; color: #141408; text-align: center; font-weight: 600; font-size: 16px; padding: 14px; border-radius: 999px">Confirmo que voy</div>
+      </div>
+      <div style="display: flex; gap: 4px" aria-label="Elegir ejemplo de salida">
+        <sc-for list="{{dots}}" as="dot" hint-placeholder-count="4">
+          <button type="button" aria-label="{{dot.label}}" aria-pressed="{{dot.pressed}}" onClick="{{dot.pick}}" style="background: transparent; border: 0; padding: 0; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; cursor: pointer"><span style="{{dot.style}}"></span></button>
+        </sc-for>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LO QUE SABÉS ANTES DE IR -->
+  <section style="background: #EBEAE4; color: #141408">
+    <div style="max-width: 1120px; margin: 0 auto; padding: 88px 20px; display: flex; flex-direction: column; gap: 40px">
+      <div style="display: flex; flex-direction: column; gap: 14px; max-width: 720px">
+        <p style="margin: 0; font-family: Archivo, sans-serif; font-style: italic; font-weight: 600; font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: #5C5C40">Cómo funciona</p>
+        <h2 style="margin: 0; font-family: Archivo, sans-serif; font-style: italic; font-weight: 900; font-size: clamp(34px, 5vw, 56px); line-height: 1; text-transform: uppercase">Sin adivinar si vas a dar la talla.</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">
+        <div style="background: #FFFFFF; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+          <span style="font-family: Archivo, sans-serif; font-style: italic; font-weight: 900; font-size: 40px; line-height: 1; color: #141408">01</span>
+          <h3 style="margin: 0; font-size: 20px; font-weight: 600">Contá cómo rodás</h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3A3A2A">Tu bici, tu ritmo, tu zona y cuándo podés salir. Dos minutos.</p>
+        </div>
+        <div style="background: #FFFFFF; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+          <span style="font-family: Archivo, sans-serif; font-style: italic; font-weight: 900; font-size: 40px; line-height: 1; color: #141408">02</span>
+          <h3 style="margin: 0; font-size: 20px; font-weight: 600">Encontrá grupos compatibles</h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3A3A2A">Ves velocidad, distancia, cuántos van, dónde se juntan y si reciben gente nueva.</p>
+        </div>
+        <div style="background: #FFFFFF; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+          <span style="font-family: Archivo, sans-serif; font-style: italic; font-weight: 900; font-size: 40px; line-height: 1; color: #141408">03</span>
+          <h3 style="margin: 0; font-size: 20px; font-weight: 600">Salí con ellos</h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3A3A2A">Confirmás, vas, y el GPS del grupo hace que nadie quede atrás.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LÍDERES -->
+  <section id="lideres" style="max-width: 1120px; margin: 0 auto; padding: 96px 20px; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
+    <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+      <p style="margin: 0; font-family: Archivo, sans-serif; font-style: italic; font-weight: 600; font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: #C6FE04">Para quienes organizan un grupo</p>
+      <h2 style="margin: 0; font-family: Archivo, sans-serif; font-style: italic; font-weight: 900; font-size: clamp(34px, 5vw, 56px); line-height: 1; text-transform: uppercase">Tu grupo, sin el caos del WhatsApp.</h2>
+      <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #EBEAE4">Publicás la salida una vez y RODA se encarga del resto: quién confirma, cuánto cupo queda y quién se suma con el nivel justo.</p>
+      <a href="#sumate" onClick="{{pickLider}}" style="align-self: flex-start; margin-top: 8px; background: #C6FE04; color: #141408; text-decoration: none; font-weight: 600; font-size: 16px; padding: 15px 24px; border-radius: 999px">Sumá tu grupo</a>
+    </div>
+    <ul style="flex: 1 1 420px; min-width: 0; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px">
+      <li style="border-top: 1px solid #33331F; padding: 20px 0; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 18px; font-weight: 600">Salidas con cupo y confirmación</span><span style="font-size: 16px; color: #A8A898; line-height: 1.5">Punto de encuentro, parada de café y etiqueta de "abierta a nuevos".</span></li>
+      <li style="border-top: 1px solid #33331F; padding: 20px 0; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 18px; font-weight: 600">Gente de tu nivel</span><span style="font-size: 16px; color: #A8A898; line-height: 1.5">La compatibilidad filtra antes de que alguien aparezca y no pueda seguir el ritmo.</span></li>
+      <li style="border-top: 1px solid #33331F; padding: 20px 0; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 18px; font-weight: 600">El grupo en vivo</span><span style="font-size: 16px; color: #A8A898; line-height: 1.5">Ves dónde está cada uno durante la salida. Si alguien se corta, te enterás.</span></li>
+      <li style="border-top: 1px solid #33331F; border-bottom: 1px solid #33331F; padding: 20px 0; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 18px; font-weight: 600">Grupo fundador</span><span style="font-size: 16px; color: #A8A898; line-height: 1.5">Los primeros grupos entran antes de la apertura y aparecen primero cuando abra el piloto.</span></li>
+    </ul>
+  </section>
+
+  <!-- LOCALES -->
+  <section id="locales" style="background: #C6FE04; color: #141408">
+    <div style="max-width: 1120px; margin: 0 auto; padding: 88px 20px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
+      <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+        <p style="margin: 0; font-family: Archivo, sans-serif; font-style: italic; font-weight: 600; font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase">Para cafés y bicicleterías</p>
+        <h2 style="margin: 0; font-family: Archivo, sans-serif; font-style: italic; font-weight: 900; font-size: clamp(34px, 5vw, 56px); line-height: 1; text-transform: uppercase">Que el pelotón pare en tu puerta.</h2>
+        <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #2A2A14">Aparecé en el mapa y como parada de las salidas de la zona. Con el GPS vas a saber cuántos ciclistas pasaron de verdad por tu local, no una estimación.</p>
+      </div>
+      <div style="flex: 1 1 320px; min-width: 0; background: #141408; color: #FFFFFF; border-radius: 28px; padding: 32px; display: flex; flex-direction: column; gap: 14px">
+        <span style="font-family: Archivo, sans-serif; font-style: italic; font-weight: 900; font-size: 28px; line-height: 1.05; text-transform: uppercase">Aliado fundador</span>
+        <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #EBEAE4">Sin costo durante todo el piloto. Los primeros locales entran antes de que abra la app.</p>
+        <a href="#sumate" onClick="{{pickLocal}}" style="align-self: flex-start; margin-top: 6px; background: #C6FE04; color: #141408; text-decoration: none; font-weight: 600; font-size: 16px; padding: 14px 22px; border-radius: 999px">Sumar mi local</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUÉ RODA -->
+  <section id="nosotros" style="max-width: 1120px; margin: 0 auto; padding: 96px 20px 24px">
+    <div style="max-width: 760px; display: flex; flex-direction: column; gap: 20px">
+      <p style="margin: 0; font-family: Archivo, sans-serif; font-style: italic; font-weight: 600; font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: #C6FE04">Por qué RODA</p>
+      <h2 style="margin: 0; font-family: Archivo, sans-serif; font-style: italic; font-weight: 900; font-size: clamp(34px, 5vw, 56px); line-height: 1; text-transform: uppercase">Salir en grupo no debería depender de a quién conocés.</h2>
+      <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #EBEAE4">RODA empezó hablando con ciclistas de la zona y aparecieron dos problemas. El que sale solo no se anima a sumarse a un grupo porque no sabe si va a poder seguir el ritmo. Y el que ya tiene grupo organiza todo en un WhatsApp donde nadie sabe bien quién va ni a qué hora.</p>
+      <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #EBEAE4">RODA junta las dos puntas: te muestra cada grupo como es antes de ir, y le ordena la salida a quien la organiza.</p>
+      <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #C8C8B8">¿Tenés un grupo o un local y querés hablar antes? Escribinos a <a href="mailto:roda.club.app@gmail.com">roda.club.app@gmail.com</a></p>
+    </div>
+  </section>
+
+  <!-- FORMULARIO -->
+  <section id="sumate" style="max-width: 720px; margin: 0 auto; padding: 96px 20px; display: flex; flex-direction: column; gap: 28px">
+    <div style="display: flex; flex-direction: column; gap: 14px">
+      <p style="margin: 0; font-family: Archivo, sans-serif; font-style: italic; font-weight: 600; font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: #C6FE04">Lista de espera</p>
+      <h2 style="margin: 0; font-family: Archivo, sans-serif; font-style: italic; font-weight: 900; font-size: clamp(34px, 5vw, 56px); line-height: 1; text-transform: uppercase">Sumate antes que nadie.</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.55; color: #EBEAE4">El piloto abre en marzo 2027. Te avisamos primero.</p>
+    </div>
+
+    <sc-if value="{{notSent}}" hint-placeholder-val="{{ true }}">
+      <div style="display: flex; flex-direction: column; gap: 24px">
+        <div role="tablist" aria-label="Tipo de alta" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; background: #1E1E12; padding: 6px; border-radius: 999px">
+          <sc-for list="{{tabs}}" as="tab" hint-placeholder-count="3">
+            <button type="button" role="tab" aria-selected="{{tab.selected}}" onClick="{{tab.pick}}" style="{{tab.style}}">{{tab.label}}</button>
+          </sc-for>
+        </div>
+
+        <form onSubmit="{{submit}}" style="display: flex; flex-direction: column; gap: 18px">
+
+          <sc-if value="{{isLocal}}" hint-placeholder-val="{{ false }}">
+            <div style="display: flex; flex-direction: column; gap: 18px">
+              <div style="display: flex; flex-direction: column; gap: 8px">
+                <label for="f-tipo-local" style="font-size: 14px; font-weight: 500; color: #EBEAE4">Tipo de local</label>
+                <select id="f-tipo-local" required style="background: #1E1E12; color: #FFFFFF; border: 1px solid #3A3A26; border-radius: 14px; padding: 14px 16px; font: 16px Inter, sans-serif; min-height: 52px"><option value="">Elegí una opción</option><option>Café</option><option>Bicicletería</option><option>Marca</option><option>Otro</option></select>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 8px">
+                <label for="f-local" style="font-size: 14px; font-weight: 500; color: #EBEAE4">Nombre del local</label>
+                <input id="f-local" type="text" required style="background: #1E1E12; color: #FFFFFF; border: 1px solid #3A3A26; border-radius: 14px; padding: 14px 16px; font: 16px Inter, sans-serif; min-height: 52px; box-sizing: border-box">
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 8px">
+                <label for="f-dir" style="font-size: 14px; font-weight: 500; color: #EBEAE4">Dirección y localidad</label>
+                <input id="f-dir" type="text" placeholder="Ej.: Av. del Libertador 1234, Olivos" style="background: #1E1E12; color: #FFFFFF; border: 1px solid #3A3A26; border-radius: 14px; padding: 14px 16px; font: 16px Inter, sans-serif; min-height: 52px; box-sizing: border-box">
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{isLider}}" hint-placeholder-val="{{ false }}">
+            <div style="display: flex; flex-direction: column; gap: 18px">
+              <div style="display: flex; flex-direction: column; gap: 8px">
+                <label for="f-grupo" style="font-size: 14px; font-weight: 500; color: #EBEAE4">Nombre del grupo</label>
+                <input id="f-grupo" type="text" required style="background: #1E1E12; color: #FFFFFF; border: 1px solid #3A3A26; border-radius: 14px; padding: 14px 16px; font: 16px Inter, sans-serif; min-height: 52px; box-sizing: border-box">
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px">
+                <div style="display: flex; flex-direction: column; gap: 8px">
+                  <label for="f-cant" style="font-size: 14px; font-weight: 500; color: #EBEAE4">¿Cuántos salen?</label>
+                  <select id="f-cant" required style="background: #1E1E12; color: #FFFFFF; border: 1px solid #3A3A26; border-radius: 14px; padding: 14px 16px; font: 16px Inter, sans-serif; min-height: 52px"><option value="">Aprox.</option><option>Menos de 5</option><option>5 a 10</option><option>11 a 20</option><option>21 a 40</option><option>Más de 40</option></select>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 8px">
+                  <label for="f-ritmo-g" style="font-size: 14px; font-weight: 500; color: #EBEAE4">Ritmo del grupo</label>
+                  <select id="f-ritmo-g" style="background: #1E1E12; color: #FFFFFF; border: 1px solid #3A3A26; border-radius: 14px; padding: 14px 16px; font: 16px Inter, sans-serif; min-height: 52px"><option value="">Elegí</option><option>Chill (menos de 25 km/h)</option><option>Moderado (25–30 km/h)</option><option>Intenso (más de 30 km/h)</option><option>Varía</option></select>
+                </div>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 8px">
+                <label for="f-ig-g" style="font-size: 14px; font-weight: 500; color: #EBEAE4">Instagram del grupo <span style="color: #A8A898; font-weight: 400">(opcional)</span></label>
+                <input id="f-ig-g" type="text" placeholder="@" style="background: #1E1E12; color: #FFFFFF; border: 1px solid #3A3A26; border-radius: 14px; padding: 14px 16px; font: 16px Inter, sans-serif; min-height: 52px; box-sizing: border-box">
+              </div>
+            </div>
+          </sc-if>
+
+          <div style="display: flex; flex-direction: column; gap: 8px">
+            <label for="f-nombre" style="font-size: 14px; font-weight: 500; color: #EBEAE4">Tu nombre</label>
+            <input id="f-nombre" type="text" autocomplete="name" required style="background: #1E1E12; color: #FFFFFF; border: 1px solid #3A3A26; border-radius: 14px; padding: 14px 16px; font: 16px Inter, sans-serif; min-height: 52px; box-sizing: border-box">
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px">
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <label for="f-mail" style="font-size: 14px; font-weight: 500; color: #EBEAE4">Mail</label>
+              <input id="f-mail" type="email" autocomplete="email" required style="background: #1E1E12; color: #FFFFFF; border: 1px solid #3A3A26; border-radius: 14px; padding: 14px 16px; font: 16px Inter, sans-serif; min-height: 52px; box-sizing: border-box">
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <label for="f-wa" style="font-size: 14px; font-weight: 500; color: #EBEAE4">WhatsApp <span style="color: #A8A898; font-weight: 400">(opcional)</span></label>
+              <input id="f-wa" type="tel" autocomplete="tel" placeholder="11 1234 5678" style="background: #1E1E12; color: #FFFFFF; border: 1px solid #3A3A26; border-radius: 14px; padding: 14px 16px; font: 16px Inter, sans-serif; min-height: 52px; box-sizing: border-box">
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 8px">
+            <label for="f-zona" style="font-size: 14px; font-weight: 500; color: #EBEAE4">{{zonaLabel}}</label>
+            <select id="f-zona" required style="background: #1E1E12; color: #FFFFFF; border: 1px solid #3A3A26; border-radius: 14px; padding: 14px 16px; font: 16px Inter, sans-serif; min-height: 52px"><option value="">Elegí tu zona</option><option>Vicente López / Olivos / Florida</option><option>San Isidro / Martínez</option><option>San Fernando / Tigre / Nordelta</option><option>Otro partido de zona norte</option><option>CABA norte (Palermo, Belgrano, Núñez, Costanera)</option><option>CABA, otra zona</option><option>Zona oeste</option><option>Zona sur</option><option>La Plata</option><option>Otra</option></select>
+          </div>
+
+          <sc-if value="{{showBici}}" hint-placeholder-val="{{ true }}">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px">
+              <div style="display: flex; flex-direction: column; gap: 8px">
+                <label for="f-bici" style="font-size: 14px; font-weight: 500; color: #EBEAE4">Tipo de bici</label>
+                <select id="f-bici" required style="background: #1E1E12; color: #FFFFFF; border: 1px solid #3A3A26; border-radius: 14px; padding: 14px 16px; font: 16px Inter, sans-serif; min-height: 52px"><option value="">Elegí</option><option>Ruta (manubrio curvo, cubiertas finas)</option><option>Gravel (ruta y tierra)</option><option>MTB / mountain bike</option><option>Urbana, híbrida o de paseo</option><option>Todavía no tengo</option></select>
+              </div>
+              <sc-if value="{{isCiclista}}" hint-placeholder-val="{{ true }}">
+                <div style="display: flex; flex-direction: column; gap: 8px">
+                  <label for="f-nivel" style="font-size: 14px; font-weight: 500; color: #EBEAE4">Tu ritmo</label>
+                  <select id="f-nivel" required style="background: #1E1E12; color: #FFFFFF; border: 1px solid #3A3A26; border-radius: 14px; padding: 14px 16px; font: 16px Inter, sans-serif; min-height: 52px"><option value="">Elegí</option><option>Chill (menos de 25 km/h)</option><option>Moderado (25–30 km/h)</option><option>Intenso (más de 30 km/h)</option><option>No sé todavía</option></select>
+                </div>
+              </sc-if>
+            </div>
+          </sc-if>
+
+          <label for="f-ok" style="display: flex; gap: 12px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: #C8C8B8; cursor: pointer; padding: 6px 0">
+            <input id="f-ok" type="checkbox" required style="width: 22px; height: 22px; margin: 0; flex: none; accent-color: #C6FE04">
+            <span>Acepto que RODA me contacte por mail o WhatsApp sobre el lanzamiento. Ver <a href="#privacidad">política de privacidad</a>.</span>
+          </label>
+
+          <button type="submit" style="background: #C6FE04; color: #141408; border: 0; font: 600 17px Inter, sans-serif; padding: 18px 24px; border-radius: 999px; cursor: pointer; min-height: 56px">{{submitLabel}}</button>
+        </form>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{sent}}" hint-placeholder-val="{{ false }}">
+      <div role="status" style="background: #1E1E12; border: 1px solid #3A3A26; border-radius: 28px; padding: 36px; display: flex; flex-direction: column; gap: 14px">
+        <span style="font-family: Archivo, sans-serif; font-style: italic; font-weight: 900; font-size: 36px; line-height: 1; text-transform: uppercase; color: #C6FE04">Ya estás adentro.</span>
+        <p style="margin: 0; font-size: 17px; line-height: 1.55; color: #EBEAE4">{{doneText}}</p>
+        <p style="margin: 0; font-size: 15px; color: #A8A898">Mientras tanto, seguinos en <a href="https://instagram.com/rodaclub.ar">@rodaclub.ar</a>.</p>
+        <button type="button" onClick="{{reset}}" style="align-self: flex-start; background: transparent; color: #FFFFFF; border: 1.5px solid #5A5A48; font: 600 15px Inter, sans-serif; padding: 12px 18px; border-radius: 999px; cursor: pointer; min-height: 44px">Anotar a otra persona</button>
+      </div>
+    </sc-if>
+  </section>
+
+  <!-- PREGUNTAS -->
+  <section style="border-top: 1px solid #2A2A1C">
+    <div style="max-width: 720px; margin: 0 auto; padding: 72px 20px; display: flex; flex-direction: column; gap: 4px">
+      <h2 style="margin: 0 0 20px; font-family: Archivo, sans-serif; font-style: italic; font-weight: 900; font-size: 32px; line-height: 1; text-transform: uppercase">Preguntas</h2>
+      <details style="border-top: 1px solid #2A2A1C; padding: 18px 0"><summary style="font-size: 17px; font-weight: 600; cursor: pointer; min-height: 28px">¿Qué es un pelotón?</summary><p style="margin: 12px 0 0; font-size: 16px; line-height: 1.55; color: #C8C8B8">Así se le dice a un grupo de ciclistas que sale a rodar junto. Pueden ser cinco amigos que salen los sábados o un club de cuarenta.</p></details>
+      <details style="border-top: 1px solid #2A2A1C; padding: 18px 0"><summary style="font-size: 17px; font-weight: 600; cursor: pointer; min-height: 28px">¿Cuánto cuesta?</summary><p style="margin: 12px 0 0; font-size: 16px; line-height: 1.55; color: #C8C8B8">Para ciclistas y líderes de grupo, RODA es gratis.</p></details>
+      <details style="border-top: 1px solid #2A2A1C; padding: 18px 0"><summary style="font-size: 17px; font-weight: 600; cursor: pointer; min-height: 28px">¿Cuándo sale la app?</summary><p style="margin: 12px 0 0; font-size: 16px; line-height: 1.55; color: #C8C8B8">El piloto abre en marzo 2027. Los grupos fundadores la prueban antes, en febrero.</p></details>
+      <details style="border-top: 1px solid #2A2A1C; padding: 18px 0"><summary style="font-size: 17px; font-weight: 600; cursor: pointer; min-height: 28px">¿Dónde funciona?</summary><p style="margin: 12px 0 0; font-size: 16px; line-height: 1.55; color: #C8C8B8">Arrancamos por zona norte y vamos sumando zonas según dónde se anote más gente. Por eso te pedimos la tuya: si tu zona junta grupos, es de las próximas.</p></details>
+      <details style="border-top: 1px solid #2A2A1C; border-bottom: 1px solid #2A2A1C; padding: 18px 0"><summary style="font-size: 17px; font-weight: 600; cursor: pointer; min-height: 28px">Nunca salí en grupo. ¿Es para mí?</summary><p style="margin: 12px 0 0; font-size: 16px; line-height: 1.55; color: #C8C8B8">Sí. RODA te muestra solo grupos de tu ritmo y te avisa cuáles reciben gente nueva. La idea es que nadie quede atrás.</p></details>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="privacidad" style="background: #0E0E05; border-top: 1px solid #2A2A1C">
+    <div style="max-width: 1120px; margin: 0 auto; padding: 40px 20px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: center">
+      <span style="font-family: Archivo, sans-serif; font-style: italic; font-weight: 600; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: #EBEAE4">Encontrá tu grupo. <span style="color: #C6FE04">Salí a rodar.</span></span>
+      <div style="display: flex; flex-wrap: wrap; gap: 4px 20px; font-size: 14px">
+        <a href="https://instagram.com/rodaclub.ar" style="padding: 12px 0">Instagram</a>
+        <a href="mailto:roda.club.app@gmail.com" style="padding: 12px 0">roda.club.app@gmail.com</a>
+        <a href="#privacidad" style="padding: 12px 0; color: #A8A898">Privacidad</a>
+        <a href="#privacidad" style="padding: 12px 0; color: #A8A898">Términos</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":4600}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { tipo: 'ciclista', sent: false, slide: 0, fading: false };
+    this.slides = [
+      { when: 'Sáb · 7:30 · Vial Costero', title: 'Ruta de sábado', badge: 'Tu nivel', fit: 'ok', pace: '25–30', km: '60', spots: '9/14', meet: 'Vial Costero, Vicente López', extra: 'Abierta a nuevos' },
+      { when: 'Dom · 8:00 · Olivos', title: 'Tranqui de domingo', badge: 'Tu nivel', fit: 'ok', pace: '-25', km: '35', spots: '6/12', meet: 'Puerto de Olivos', extra: 'Ideal si recién arrancás' },
+      { when: 'Sáb · 9:00 · San Fernando', title: 'Salida de mujeres', badge: 'Tu nivel', fit: 'ok', pace: '25–30', km: '45', spots: '7/12', meet: 'Costanera de San Fernando', extra: 'Abierta a nuevas' },
+      { when: 'Mar · 18:30 · Tigre', title: 'Ritmo de semana', badge: '1 nivel arriba', fit: 'warn', pace: '+30', km: '45', spots: '11/15', meet: 'Estación Tigre', extra: 'Abierta a nuevos' }
+    ];
+  }
+  componentDidMount() {
+    let reduce = false;
+    try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+    if (!reduce) this.timer = setInterval(() => this.goTo((this.state.slide + 1) % this.slides.length), 4500);
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    clearTimeout(this.fadeT);
+  }
+  goTo(i) {
+    if (i === this.state.slide) return;
+    this.setState({ fading: true });
+    clearTimeout(this.fadeT);
+    this.fadeT = setTimeout(() => this.setState({ slide: i, fading: false }), 280);
+  }
+  renderVals() {
+    const tipo = this.state.tipo;
+    const s = this.slides[this.state.slide];
+    const badgeBase = 'font-size: 12px; font-weight: 600; padding: 5px 10px; border-radius: 999px; white-space: nowrap;';
+    const card = Object.assign({}, s, {
+      opacity: this.state.fading ? 0 : 1,
+      badgeStyle: badgeBase + (s.fit === 'ok' ? ' background: #C6FE04; color: #141408;' : ' background: #FF9F43; color: #141408;')
+    });
+    const dots = this.slides.map((x, i) => ({
+      label: 'Ver ejemplo: ' + x.title,
+      pressed: i === this.state.slide ? 'true' : 'false',
+      style: 'display: block; height: 8px; border-radius: 999px; transition: width 280ms ease; ' + (i === this.state.slide ? 'width: 24px; background: #C6FE04;' : 'width: 8px; background: #5A5A48;'),
+      pick: () => { clearInterval(this.timer); this.goTo(i); }
+    }));
+    const base = 'border: 0; border-radius: 999px; padding: 12px 8px; min-height: 48px; font: 600 15px Inter, sans-serif; cursor: pointer;';
+    const on = base + ' background: #C6FE04; color: #141408;';
+    const off = base + ' background: transparent; color: #EBEAE4;';
+    const defs = [
+      { id: 'ciclista', label: 'Ciclista' },
+      { id: 'lider', label: 'Líder' },
+      { id: 'local', label: 'Local' }
+    ];
+    const tabs = defs.map((t) => ({
+      label: t.label,
+      selected: t.id === tipo ? 'true' : 'false',
+      style: t.id === tipo ? on : off,
+      pick: () => this.setState({ tipo: t.id })
+    }));
+    const done = {
+      ciclista: 'Te vamos a escribir cuando abra el piloto, con los grupos de tu zona y tu ritmo.',
+      lider: 'Te escribimos en estos días para cargar tu grupo como fundador antes de la apertura.',
+      local: 'Te escribimos en estos días para contarte cómo funciona ser aliado fundador.'
+    };
+    const labels = { ciclista: 'Anotarme', lider: 'Sumar mi grupo', local: 'Sumar mi local' };
+    return {
+      card,
+      dots,
+      tabs,
+      isCiclista: tipo === 'ciclista',
+      isLider: tipo === 'lider',
+      isLocal: tipo === 'local',
+      showBici: tipo !== 'local',
+      zonaLabel: tipo === 'ciclista' ? '¿Por dónde rodás?' : (tipo === 'lider' ? '¿Dónde sale el grupo?' : 'Zona del local'),
+      submitLabel: labels[tipo],
+      doneText: done[tipo],
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      pickCiclista: () => this.setState({ tipo: 'ciclista', sent: false }),
+      pickLider: () => this.setState({ tipo: 'lider', sent: false }),
+      pickLocal: () => this.setState({ tipo: 'local', sent: false }),
+      submit: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ sent: true }); },
+      reset: () => this.setState({ sent: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

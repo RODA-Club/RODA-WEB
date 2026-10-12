@@ -1,0 +1,135 @@
+:root {
+  --lima: #c6fe04;
+  --lima-claro: #f8feba;
+  --negro: #141408;
+  --negro-footer: #0e0e05;
+  --hueso: #ebeae4;
+  --blanco: #ffffff;
+  --superficie: #1e1e12;
+  --borde: #33331f;
+  --borde-input: #3a3a26;
+  --borde-suave: #2a2a1c;
+  --borde-ghost: #5a5a48;
+  --texto-2: #a8a898;
+  --texto-3: #c8c8b8;
+  --naranja: #ff9f43;
+
+  --font-titulo: var(--font-archivo), "Archivo", sans-serif;
+  --font-texto: var(--font-inter), "Inter", system-ui, sans-serif;
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--negro);
+  color: var(--blanco);
+  font-family: var(--font-texto);
+}
+
+a {
+  color: var(--lima);
+}
+
+a:hover {
+  color: var(--lima-claro);
+}
+
+input::placeholder {
+  color: #8a8a7a;
+}
+
+:focus-visible {
+  outline: 2px solid var(--lima);
+  outline-offset: 3px;
+}
+
+[id] {
+  scroll-margin-top: 80px;
+}
+
+/* Piezas compartidas entre secciones */
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.eyebrow {
+  margin: 0;
+  font-family: var(--font-titulo);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lima);
+}
+
+.h2 {
+  margin: 0;
+  font-family: var(--font-titulo);
+  font-style: italic;
+  font-weight: 900;
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border-radius: 999px;
+  font-family: var(--font-texto);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btnPrimary {
+  background: var(--lima);
+  color: var(--negro);
+  border: 0;
+}
+
+.btnPrimary:hover {
+  background: var(--lima-claro);
+  color: var(--negro);
+}
+
+.btnGhost {
+  background: transparent;
+  color: var(--blanco);
+  border: 1.5px solid var(--borde-ghost);
+}
+
+.btnGhost:hover {
+  color: var(--blanco);
+  border-color: var(--hueso);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}

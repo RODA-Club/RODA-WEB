@@ -1,0 +1,512 @@
+.lima {
+  color: var(--lima);
+}
+
+/* NAV */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(20, 20, 8, 0.92);
+  border-bottom: 1px solid var(--borde-suave);
+}
+
+.headerInner {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.logo {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.navLink {
+  color: var(--hueso);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 12px 10px;
+}
+
+.navLink:hover {
+  color: var(--blanco);
+}
+
+.navCta {
+  font-size: 15px;
+  padding: 12px 18px;
+}
+
+/* HERO */
+
+.hero {
+  padding-top: 72px;
+  padding-bottom: 88px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 56px;
+  align-items: center;
+}
+
+.heroText {
+  flex: 1 1 460px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.h1 {
+  margin: 0;
+  font-family: var(--font-titulo);
+  font-style: italic;
+  font-weight: 900;
+  font-size: clamp(44px, 7.5vw, 84px);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.heroLead {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--hueso);
+  max-width: 520px;
+}
+
+.heroCtas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+.ctaBig {
+  font-size: 17px;
+  padding: 16px 26px;
+}
+
+.ctaBigGhost {
+  font-size: 17px;
+  padding: 15px 24px;
+}
+
+.heroNote {
+  margin: 0;
+  font-size: 14px;
+  color: var(--texto-2);
+}
+
+.heroCard {
+  flex: 1 1 340px;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* CÓMO FUNCIONA */
+
+.how {
+  background: var(--hueso);
+  color: var(--negro);
+}
+
+.how :focus-visible {
+  outline-color: var(--negro);
+}
+
+.howInner {
+  padding-top: 88px;
+  padding-bottom: 88px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.howHead {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 720px;
+}
+
+.eyebrowOnLight {
+  color: #5c5c40;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.step {
+  background: var(--blanco);
+  border-radius: 24px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stepNum {
+  font-family: var(--font-titulo);
+  font-style: italic;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 1;
+  color: var(--negro);
+  font-variant-numeric: tabular-nums;
+}
+
+.stepTitle {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.stepText {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #3a3a2a;
+}
+
+/* LÍDERES */
+
+.leaders {
+  padding-top: 96px;
+  padding-bottom: 96px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.leadersText {
+  flex: 1 1 420px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.lead {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--hueso);
+}
+
+.ctaMid {
+  align-self: flex-start;
+  margin-top: 8px;
+  font-size: 16px;
+  padding: 15px 24px;
+}
+
+.features {
+  flex: 1 1 420px;
+  min-width: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.feature {
+  border-top: 1px solid var(--borde);
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.feature:last-child {
+  border-bottom: 1px solid var(--borde);
+}
+
+.featureTitle {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.featureText {
+  font-size: 16px;
+  color: var(--texto-2);
+  line-height: 1.5;
+}
+
+/* LOCALES */
+
+.locales {
+  background: var(--lima);
+  color: var(--negro);
+}
+
+.locales :focus-visible {
+  outline-color: var(--negro);
+}
+
+.localesInner {
+  padding-top: 88px;
+  padding-bottom: 88px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  align-items: center;
+}
+
+.localesText {
+  flex: 1 1 460px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.eyebrowOnLima {
+  color: var(--negro);
+}
+
+.localesLead {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.55;
+  color: #2a2a14;
+}
+
+.founder {
+  flex: 1 1 320px;
+  min-width: 0;
+  background: var(--negro);
+  color: var(--blanco);
+  border-radius: 28px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.founder :focus-visible {
+  outline-color: var(--lima);
+}
+
+.founderTitle {
+  font-family: var(--font-titulo);
+  font-style: italic;
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.founderText {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--hueso);
+}
+
+.ctaSmall {
+  align-self: flex-start;
+  margin-top: 6px;
+  font-size: 16px;
+  padding: 14px 22px;
+}
+
+/* POR QUÉ RODA */
+
+.why {
+  padding-top: 96px;
+  padding-bottom: 24px;
+}
+
+.whyInner {
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.whyText {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--hueso);
+}
+
+.whyContact {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--texto-3);
+  overflow-wrap: anywhere;
+}
+
+/* FORMULARIO */
+
+.signup {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 96px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.signupHead {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.signupLead {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--hueso);
+}
+
+/* PREGUNTAS */
+
+.faq {
+  border-top: 1px solid var(--borde-suave);
+}
+
+.faqInner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 72px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.faqTitle {
+  margin: 0 0 20px;
+  font-family: var(--font-titulo);
+  font-style: italic;
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.faqItem {
+  border-top: 1px solid var(--borde-suave);
+  padding: 18px 0;
+}
+
+.faqItem:last-child {
+  border-bottom: 1px solid var(--borde-suave);
+}
+
+.faqQ {
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 28px;
+}
+
+.faqA {
+  margin: 12px 0 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--texto-3);
+}
+
+/* FOOTER */
+
+.footer {
+  background: var(--negro-footer);
+  border-top: 1px solid var(--borde-suave);
+}
+
+.footerInner {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footerTag {
+  font-family: var(--font-titulo);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--hueso);
+}
+
+.footerLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  font-size: 14px;
+}
+
+.footerLinks a {
+  padding: 12px 0;
+}
+
+.footerLinks a.footerMuted {
+  color: var(--texto-2);
+}
+
+.footerLinks a.footerMuted:hover {
+  color: var(--hueso);
+}
+
+/* En celulares angostos el nav tiene que entrar en una línea */
+@media (max-width: 420px) {
+  .headerInner {
+    gap: 8px;
+  }
+
+  .nav {
+    gap: 0;
+    flex-wrap: nowrap;
+  }
+
+  .navLink {
+    padding: 12px 8px;
+  }
+
+  .navCta {
+    margin-left: 4px;
+    padding: 12px 16px;
+  }
+
+  .logo {
+    height: 26px;
+  }
+}
