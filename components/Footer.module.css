@@ -1,0 +1,47 @@
+.footer {
+  background: var(--negro-footer);
+  border-top: 1px solid var(--borde-suave);
+}
+
+.inner {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tag {
+  font-family: var(--font-titulo);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--hueso);
+}
+
+.lima {
+  color: var(--lima);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  font-size: 14px;
+}
+
+.links a {
+  padding: 12px 0;
+}
+
+.links a.muted {
+  color: var(--texto-2);
+}
+
+.links a.muted:hover {
+  color: var(--hueso);
+}

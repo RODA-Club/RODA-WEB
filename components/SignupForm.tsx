@@ -1,6 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { track } from "@/lib/analytics";
+import { getAttribution } from "@/lib/attribution";
+import { BICIS, CANTIDADES, LOCAL_TIPOS, RITMOS_CICLISTA, RITMOS_GRUPO, ZONAS } from "@/lib/opciones";
 import styles from "./SignupForm.module.css";
 import { PICK_TIPO_EVENT, type Tipo } from "./tipo";
 
@@ -28,46 +31,84 @@ const DONE_TEXT: Record<Tipo, string> = {
   local: "Te escribimos en estos días para contarte cómo funciona ser aliado fundador.",
 };
 
-const ZONAS = [
-  "Vicente López / Olivos / Florida",
-  "San Isidro / Martínez",
-  "San Fernando / Tigre / Nordelta",
-  "Otro partido de zona norte",
-  "CABA norte (Palermo, Belgrano, Núñez, Costanera)",
-  "CABA, otra zona",
-  "Zona oeste",
-  "Zona sur",
-  "La Plata",
-  "Otra",
-];
+type Status = "idle" | "sending" | "error";
 
-const RITMOS = ["Chill (menos de 25 km/h)", "Moderado (25–30 km/h)", "Intenso (más de 30 km/h)"];
-
-const BICIS = [
-  "Ruta (manubrio curvo, cubiertas finas)",
-  "Gravel (ruta y tierra)",
-  "MTB / mountain bike",
-  "Urbana, híbrida o de paseo",
-  "Todavía no tengo",
-];
+const ERROR_TEXT = {
+  invalid: "Revisá los datos: falta algún campo o el mail no es válido.",
+  too_fast: "Fue muy rápido. Esperá un segundo y volvé a tocar el botón.",
+  server: "No pudimos guardar tus datos. Probá de nuevo en un momento o escribinos a roda.club.app@gmail.com.",
+};
 
 export function SignupForm() {
   const [tipo, setTipo] = useState<Tipo>("ciclista");
   const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
+  const [error, setError] = useState<keyof typeof ERROR_TEXT | null>(null);
+  const started = useRef(new Set<Tipo>());
+
+  function changeTipo(next: Tipo) {
+    setTipo(next);
+    setSent(false);
+    setError(null);
+    track("tab_change", { tipo: next });
+  }
 
   useEffect(() => {
     function onPick(e: Event) {
-      setTipo((e as CustomEvent<Tipo>).detail);
-      setSent(false);
+      changeTipo((e as CustomEvent<Tipo>).detail);
     }
     window.addEventListener(PICK_TIPO_EVENT, onPick);
     return () => window.removeEventListener(PICK_TIPO_EVENT, onPick);
   }, []);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function onFocus() {
+    if (started.current.has(tipo)) return;
+    started.current.add(tipo);
+    track("form_start", { tipo });
+  }
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // Paso 1: envío falso. El alta real (Supabase) llega en el paso 2.
-    setSent(true);
+    if (status === "sending") return;
+
+    const fd = new FormData(e.currentTarget);
+    const fields = Object.fromEntries(fd.entries()) as Record<string, string>;
+    const attribution = getAttribution();
+    const payload = {
+      ...fields,
+      ...attribution,
+      tipo,
+      consentimiento: fd.get("consentimiento") === "on",
+      elapsed_ms: Math.round(performance.now()),
+    };
+
+    setStatus("sending");
+    setError(null);
+    let reason: keyof typeof ERROR_TEXT = "server";
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
+      if (res.ok && data.ok) {
+        track("form_submit", {
+          tipo,
+          zona: fields.zona,
+          utm_source: attribution.utm_source,
+          ref: attribution.ref,
+        });
+        setStatus("idle");
+        setSent(true);
+        return;
+      }
+      if (data.error === "invalid" || data.error === "too_fast") reason = data.error;
+    } catch {}
+
+    track("form_error", { tipo, reason });
+    setStatus("idle");
+    setError(reason);
   }
 
   if (sent) {
@@ -78,7 +119,14 @@ export function SignupForm() {
         <p className={styles.doneFollow}>
           Mientras tanto, seguinos en <a href="https://instagram.com/rodaclub.ar">@rodaclub.ar</a>.
         </p>
-        <button type="button" className={`btn btnGhost ${styles.again}`} onClick={() => setSent(false)}>
+        <button
+          type="button"
+          className={`btn btnGhost ${styles.again}`}
+          onClick={() => {
+            setSent(false);
+            started.current.clear();
+          }}
+        >
           Anotar a otra persona
         </button>
       </div>
@@ -96,23 +144,28 @@ export function SignupForm() {
             aria-selected={t.id === tipo}
             aria-controls="form-sumate"
             className={`${styles.tab} ${t.id === tipo ? styles.tabOn : ""}`}
-            onClick={() => setTipo(t.id)}
+            onClick={() => t.id !== tipo && changeTipo(t.id)}
           >
             {t.label}
           </button>
         ))}
       </div>
 
-      <form id="form-sumate" className={styles.form} onSubmit={onSubmit}>
+      <form id="form-sumate" className={styles.form} onSubmit={onSubmit} onFocus={onFocus}>
+        {/* Honeypot: oculto para personas, los bots lo completan. */}
+        <div className={styles.hp} aria-hidden="true">
+          <label htmlFor="f-website">No completar</label>
+          <input id="f-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+        </div>
+
         {tipo === "local" && (
           <div className={styles.group}>
             <Field label="Tipo de local" htmlFor="f-tipo-local">
               <select id="f-tipo-local" name="local_tipo" required className={styles.control} defaultValue="">
                 <option value="">Elegí una opción</option>
-                <option>Café</option>
-                <option>Bicicletería</option>
-                <option>Marca</option>
-                <option>Otro</option>
+                {LOCAL_TIPOS.map((t) => (
+                  <option key={t}>{t}</option>
+                ))}
               </select>
             </Field>
             <Field label="Nombre del local" htmlFor="f-local">
@@ -139,20 +192,17 @@ export function SignupForm() {
               <Field label="¿Cuántos salen?" htmlFor="f-cant">
                 <select id="f-cant" name="grupo_cantidad" required className={styles.control} defaultValue="">
                   <option value="">Aprox.</option>
-                  <option>Menos de 5</option>
-                  <option>5 a 10</option>
-                  <option>11 a 20</option>
-                  <option>21 a 40</option>
-                  <option>Más de 40</option>
+                  {CANTIDADES.map((c) => (
+                    <option key={c}>{c}</option>
+                  ))}
                 </select>
               </Field>
               <Field label="Ritmo del grupo" htmlFor="f-ritmo-g">
                 <select id="f-ritmo-g" name="grupo_ritmo" className={styles.control} defaultValue="">
                   <option value="">Elegí</option>
-                  {RITMOS.map((r) => (
+                  {RITMOS_GRUPO.map((r) => (
                     <option key={r}>{r}</option>
                   ))}
-                  <option>Varía</option>
                 </select>
               </Field>
             </div>
@@ -204,10 +254,9 @@ export function SignupForm() {
               <Field label="Tu ritmo" htmlFor="f-nivel">
                 <select id="f-nivel" name="ritmo" required className={styles.control} defaultValue="">
                   <option value="">Elegí</option>
-                  {RITMOS.map((r) => (
+                  {RITMOS_CICLISTA.map((r) => (
                     <option key={r}>{r}</option>
                   ))}
-                  <option>No sé todavía</option>
                 </select>
               </Field>
             )}
@@ -218,12 +267,18 @@ export function SignupForm() {
           <input id="f-ok" name="consentimiento" type="checkbox" required className={styles.check} />
           <span>
             Acepto que RODA me contacte por mail o WhatsApp sobre el lanzamiento. Ver{" "}
-            <a href="#privacidad">política de privacidad</a>.
+            <a href="/privacidad">política de privacidad</a>.
           </span>
         </label>
 
-        <button type="submit" className={`btn btnPrimary ${styles.submit}`}>
-          {SUBMIT_LABEL[tipo]}
+        {error && (
+          <p role="alert" className={styles.error}>
+            {ERROR_TEXT[error]}
+          </p>
+        )}
+
+        <button type="submit" className={`btn btnPrimary ${styles.submit}`} disabled={status === "sending"}>
+          {status === "sending" ? "Enviando…" : SUBMIT_LABEL[tipo]}
         </button>
       </form>
     </div>

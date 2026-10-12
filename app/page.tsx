@@ -1,3 +1,4 @@
+import { Footer } from "@/components/Footer";
 import { Logo } from "@/components/Logo";
 import { RideCard } from "@/components/RideCard";
 import { SignupForm } from "@/components/SignupForm";
@@ -178,19 +179,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer id="privacidad" className={styles.footer}>
-        <div className={`container ${styles.footerInner}`}>
-          <span className={styles.footerTag}>
-            Encontrá tu grupo. <span className={styles.lima}>Salí a rodar.</span>
-          </span>
-          <div className={styles.footerLinks}>
-            <a href="https://instagram.com/rodaclub.ar">Instagram</a>
-            <a href="mailto:roda.club.app@gmail.com">roda.club.app@gmail.com</a>
-            <a href="#privacidad" className={styles.footerMuted}>Privacidad</a>
-            <a href="#privacidad" className={styles.footerMuted}>Términos</a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

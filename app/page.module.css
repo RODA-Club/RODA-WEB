@@ -440,52 +440,6 @@
   color: var(--texto-3);
 }
 
-/* FOOTER */
-
-.footer {
-  background: var(--negro-footer);
-  border-top: 1px solid var(--borde-suave);
-}
-
-.footerInner {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footerTag {
-  font-family: var(--font-titulo);
-  font-style: italic;
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--hueso);
-}
-
-.footerLinks {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 20px;
-  font-size: 14px;
-}
-
-.footerLinks a {
-  padding: 12px 0;
-}
-
-.footerLinks a.footerMuted {
-  color: var(--texto-2);
-}
-
-.footerLinks a.footerMuted:hover {
-  color: var(--hueso);
-}
-
 /* En celulares angostos el nav tiene que entrar en una línea */
 @media (max-width: 420px) {
   .headerInner {

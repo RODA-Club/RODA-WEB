@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, Inter } from "next/font/google";
+import { Analytics } from "@/components/Analytics";
+import { SITE_DESCRIPTION, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -17,10 +19,31 @@ const inter = Inter({
   display: "swap",
 });
 
+const TITLE = "RODA — Encontrá tu grupo. Salí a rodar.";
+
+// og.png es un placeholder hasta que Gonzalo apruebe la imagen final.
+const OG_IMAGE = { url: "/og.png", width: 1200, height: 630, alt: "RODA. Encontrá tu grupo. Salí a rodar." };
+
 export const metadata: Metadata = {
-  title: "RODA — Encontrá tu grupo. Salí a rodar.",
-  description:
-    "RODA te conecta con grupos de ciclistas de tu nivel, tu ritmo y tu zona. Antes de ir ya sabés a qué velocidad van, cuántos son y dónde se juntan. Nadie queda atrás.",
+  metadataBase: new URL(siteUrl()),
+  title: TITLE,
+  description: SITE_DESCRIPTION,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "es_AR",
+    siteName: "RODA",
+    url: "/",
+    title: TITLE,
+    description: SITE_DESCRIPTION,
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: SITE_DESCRIPTION,
+    images: [OG_IMAGE],
+  },
 };
 
 export const viewport: Viewport = {
@@ -31,7 +54,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es-AR" className={`${archivo.variable} ${inter.variable}`}>
-      <body>{children}</body>
+      <body>
+        <Analytics />
+        {children}
+      </body>
     </html>
   );
 }
