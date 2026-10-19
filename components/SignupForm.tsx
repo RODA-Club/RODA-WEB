@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { track } from "@/lib/analytics";
 import { getAttribution } from "@/lib/attribution";
-import { BICIS, CANTIDADES, LOCAL_TIPOS, RITMOS_CICLISTA, RITMOS_GRUPO, ZONAS } from "@/lib/opciones";
+import { BICIS, CANTIDADES, LOCAL_TIPOS, RITMOS_CICLISTA, RITMOS_GRUPO, ZONA_GRUPOS } from "@/lib/opciones";
 import styles from "./SignupForm.module.css";
 import { PICK_TIPO_EVENT, type Tipo } from "./tipo";
 
@@ -235,8 +235,12 @@ export function SignupForm() {
         <Field label={ZONA_LABEL[tipo]} htmlFor="f-zona">
           <select id="f-zona" name="zona" required className={styles.control} defaultValue="">
             <option value="">Elegí tu zona</option>
-            {ZONAS.map((z) => (
-              <option key={z}>{z}</option>
+            {ZONA_GRUPOS.map((g) => (
+              <optgroup key={g.label} label={g.label}>
+                {g.zonas.map((z) => (
+                  <option key={z}>{z}</option>
+                ))}
+              </optgroup>
             ))}
           </select>
         </Field>
