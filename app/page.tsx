@@ -22,7 +22,7 @@ const PREGUNTAS = [
   { q: "¿Qué es un pelotón?", a: "Así se le dice a un grupo de ciclistas que sale a rodar juntos. Pueden ser cinco amigos que salen los sábados o un club de cuarenta." },
   { q: "¿Cuánto cuesta?", a: "Para ciclistas y líderes de grupo, RODA es gratuita." },
   { q: "¿Cuándo sale la app?", a: "El piloto abre en marzo 2027. Los grupos fundadores la prueban antes, en febrero." },
-  { q: "¿Dónde funciona?", a: "Arrancamos por zona norte y vamos sumando zonas según dónde se anote más gente. Por eso te pedimos la tuya: si tu zona junta grupos, es de las próximas." },
+  { q: "¿Dónde funciona?", a: "El piloto arranca en algunas zonas de Buenos Aires y se va ampliando según dónde se anote más gente. Por eso te pedimos la tuya: las zonas que juntan más grupos son las primeras en abrir." },
   { q: "Nunca salí en grupo. ¿Es para mí?", a: "Sí. RODA te muestra solo grupos de tu ritmo y te avisa cuáles reciben gente nueva. La idea es que nadie quede atrás." },
 ];
 
