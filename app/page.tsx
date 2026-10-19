@@ -115,7 +115,7 @@ export default function Home() {
         <section id="locales" className={styles.locales}>
           <div className={`container ${styles.localesInner}`}>
             <div className={styles.localesText}>
-              <p className={`eyebrow ${styles.eyebrowOnLima}`}>Para cafés y bicicleterías</p>
+              <p className={`eyebrow ${styles.eyebrowOnLima}`}>Para cafés, bares y bicicleterías</p>
               <h2 className="h2">Que el pelotón pare en tu puerta.</h2>
               <p className={styles.localesLead}>
                 Aparecé en el mapa y como parada de las salidas de la zona. Con el GPS vas a saber cuántos ciclistas
