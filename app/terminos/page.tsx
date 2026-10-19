@@ -7,8 +7,6 @@ export const metadata: Metadata = {
   title: "Términos de uso — RODA",
   description: "Términos de uso del sitio de RODA y de la lista de espera.",
   alternates: { canonical: "/terminos" },
-  // Sin indexar hasta completar domicilio, jurisdicción, dominio y fecha.
-  robots: { index: false, follow: true },
 };
 
 export default function Terminos() {

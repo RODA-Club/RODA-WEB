@@ -2,5 +2,10 @@ import type { MetadataRoute } from "next";
 import { siteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [{ url: `${siteUrl()}/`, changeFrequency: "weekly", priority: 1 }];
+  const base = siteUrl();
+  return [
+    { url: `${base}/`, changeFrequency: "weekly", priority: 1 },
+    { url: `${base}/privacidad`, changeFrequency: "yearly", priority: 0.2 },
+    { url: `${base}/terminos`, changeFrequency: "yearly", priority: 0.2 },
+  ];
 }

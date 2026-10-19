@@ -6,8 +6,6 @@ export const metadata: Metadata = {
   title: "Política de privacidad — RODA",
   description: "Qué datos junta RODA en este sitio, para qué los usa y qué podés hacer con ellos.",
   alternates: { canonical: "/privacidad" },
-  // Sin indexar hasta completar domicilio, jurisdicción, dominio y fecha.
-  robots: { index: false, follow: true },
 };
 
 export default function Privacidad() {

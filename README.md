@@ -34,4 +34,4 @@ Sin las variables de PostHog la página funciona igual y no manda eventos.
 
 ## Textos legales
 
-`/privacidad` y `/terminos` usan los datos de `lib/legal.ts` (fecha, domicilio, jurisdicción, dominio). Mientras sigan entre corchetes, las páginas no se indexan; no publicar el dominio final hasta completarlos. Si cambia el texto del consentimiento, subir `CONSENTIMIENTO_VERSION`.
+`/privacidad` y `/terminos` usan los datos de `lib/legal.ts` (fecha, domicilio, jurisdicción, dominio). Al cambiar de dominio, actualizar `dominio` y la fecha. Si cambia el texto del consentimiento, subir `CONSENTIMIENTO_VERSION`.
