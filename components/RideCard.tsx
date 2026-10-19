@@ -22,7 +22,7 @@ const SLIDES: Slide[] = [
   { when: "Mar · 18:30 · Tigre", title: "Ritmo de semana", badge: "1 nivel arriba", fit: "warn", pace: "+30", km: "45", spots: "11/15", meet: "Estación Tigre", extra: "Abierta a nuevos" },
 ];
 
-const ROTATE_MS = 4500;
+const ROTATE_MS = 3000;
 const FADE_MS = 280;
 
 export function RideCard() {
