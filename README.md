@@ -13,7 +13,7 @@ npm run dev
 ## Supabase
 
 1. Crear un proyecto en supabase.com (región São Paulo, `sa-east-1`).
-2. En **SQL Editor**, correr `supabase/migrations/0001_leads.sql` y después `0002_consentimiento.sql`. Crean la tabla `leads` con RLS activado y sin políticas, más las columnas de registro del consentimiento. Las dos se pueden volver a correr sin romper nada.
+2. En **SQL Editor**, correr `supabase/migrations/0001_leads.sql`. Crea la tabla `leads` con RLS activado y sin políticas, y un índice único sobre `(lower(email), tipo)`: si alguien se anota dos veces con el mismo mail y tipo, `/api/leads` actualiza su fila en vez de duplicarla.
 3. En **Project Settings → API** copiar la Project URL (`SUPABASE_URL`) y la `service_role` key o la secret key (`SUPABASE_SERVICE_ROLE_KEY`).
 
 ## Variables de entorno (Vercel → Settings → Environment Variables)

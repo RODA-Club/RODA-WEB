@@ -41,14 +41,14 @@ export async function POST(request: Request) {
     auth: { persistSession: false, autoRefreshToken: false },
   });
   const row = toRow(parsed.data);
-  let { error } = await supabase.from("leads").upsert(row, { onConflict: "email,tipo" });
+  let { error } = await supabase.from("leads").insert(row);
 
-  // Si todavía no se corrió 0002_consentimiento.sql, guardar igual el lead sin
-  // esas columnas antes que perderlo.
-  if (error?.code === "PGRST204") {
-    console.error("leads: faltan columnas de consentimiento, correr 0002_consentimiento.sql");
-    const { consentimiento_at: _at, consentimiento_version: _v, ...legacy } = row;
-    ({ error } = await supabase.from("leads").upsert(legacy, { onConflict: "email,tipo" }));
+  // Mismo mail y tipo ya anotado: se actualiza en vez de duplicar. La tabla
+  // tiene un índice único sobre (lower(email), tipo), que PostgREST no acepta
+  // como onConflict, así que el upsert va en dos pasos. El mail ya llega en
+  // minúsculas desde la validación.
+  if (error?.code === "23505") {
+    ({ error } = await supabase.from("leads").update(row).eq("email", row.email).eq("tipo", row.tipo));
   }
 
   if (error) {

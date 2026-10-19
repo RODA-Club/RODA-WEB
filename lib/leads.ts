@@ -58,8 +58,9 @@ export const leadSchema = z.discriminatedUnion("tipo", [
 
 export type Lead = z.infer<typeof leadSchema>;
 
-// Fila completa para la tabla `leads`. Las columnas que no aplican al tipo van
-// en null explícito, así un re-registro (mismo mail y tipo) pisa todo.
+// Fila completa para la tabla `leads` (sin id ni created_at, que pone la base).
+// Las columnas que no aplican al tipo van en null explícito, así un
+// re-registro (mismo mail y tipo) pisa todo.
 export function toRow(lead: Lead) {
   return {
     tipo: lead.tipo,
@@ -86,6 +87,5 @@ export function toRow(lead: Lead) {
     utm_term: lead.utm_term,
     ref: lead.ref,
     referrer: lead.referrer,
-    updated_at: new Date().toISOString(),
   };
 }
