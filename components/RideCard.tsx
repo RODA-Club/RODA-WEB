@@ -17,8 +17,8 @@ type Slide = {
 
 const SLIDES: Slide[] = [
   { when: "Sáb · 7:30 · Vial Costero", title: "Ruta de sábado", badge: "Tu nivel", fit: "ok", pace: "25–30", km: "60", spots: "9/14", meet: "Vial Costero, Vicente López", extra: "Abierta a nuevos" },
-  { when: "Dom · 8:00 · Olivos", title: "Tranqui de domingo", badge: "Tu nivel", fit: "ok", pace: "-25", km: "35", spots: "6/12", meet: "Puerto de Olivos", extra: "Ideal si recién arrancás" },
-  { when: "Sáb · 9:00 · San Fernando", title: "Salida de mujeres", badge: "Tu nivel", fit: "ok", pace: "25–30", km: "45", spots: "7/12", meet: "Costanera de San Fernando", extra: "Abierta a nuevas" },
+  { when: "Dom · 8:00 · Palermo", title: "Tranqui de domingo", badge: "Tu nivel", fit: "ok", pace: "-25", km: "35", spots: "6/12", meet: "Planetario, Palermo", extra: "Ideal si recién arrancás" },
+  { when: "Sáb · 9:00 · Costanera", title: "Salida de mujeres", badge: "Tu nivel", fit: "ok", pace: "25–30", km: "45", spots: "7/12", meet: "Fuente de las Nereidas, Costanera Sur", extra: "Abierta a nuevas" },
   { when: "Mar · 18:30 · Tigre", title: "Ritmo de semana", badge: "1 nivel arriba", fit: "warn", pace: "+30", km: "45", spots: "11/15", meet: "Estación Tigre", extra: "Abierta a nuevos" },
 ];
 
