@@ -28,6 +28,10 @@ npm run dev
 
 Sin las variables de PostHog la página funciona igual y no manda eventos.
 
+## Links cortos
+
+`/ig` redirige a `/?utm_source=instagram&utm_medium=bio`: es el link de la bio de Instagram. Se definen en `next.config.ts`.
+
 ## Links por local
 
 `https://<dominio>/?ref=giant-delta` guarda `ref = giant-delta` en el lead. También se guardan las UTM (`utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term`).
