@@ -24,13 +24,13 @@ npm run dev
 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase → Project Settings → API → `service_role` / secret key. Solo servidor. |
 | `NEXT_PUBLIC_POSTHOG_KEY` | PostHog → Project settings → Project API key (`phc_…`) |
 | `NEXT_PUBLIC_POSTHOG_HOST` | `https://us.i.posthog.com` o `https://eu.i.posthog.com`, según la región del proyecto |
-| `NEXT_PUBLIC_SITE_URL` | Opcional. El dominio final, cuando exista. |
+| `NEXT_PUBLIC_SITE_URL` | Opcional. Por defecto el sitio usa `https://rodaclub.ar` (en `lib/site.ts`). |
 
 Sin las variables de PostHog la página funciona igual y no manda eventos.
 
 ## Links cortos
 
-`/ig` redirige a `/?utm_source=instagram&utm_medium=bio`: es el link de la bio de Instagram. Se definen en `next.config.ts`.
+`rodaclub.ar/ig` redirige a `/?utm_source=instagram&utm_medium=bio`: es el link de la bio de Instagram. `roda-web.vercel.app` redirige a `rodaclub.ar` con la misma ruta y parámetros. Todo se define en `next.config.ts`.
 
 ## Links por local
 

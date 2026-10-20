@@ -1,8 +1,10 @@
-// URL pública del sitio. Cuando haya dominio, cargar NEXT_PUBLIC_SITE_URL en
-// Vercel; mientras tanto se usa la URL de producción que da Vercel.
+// Dominio oficial del sitio. NEXT_PUBLIC_SITE_URL lo pisa si hace falta (por
+// ejemplo, para probar otro dominio); en local se usa localhost.
+const PRODUCTION_URL = "https://rodaclub.ar";
+
 export function siteUrl(): string {
   if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
-  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+  if (process.env.VERCEL) return PRODUCTION_URL;
   return "http://localhost:3000";
 }
 
