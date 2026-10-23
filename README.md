@@ -22,7 +22,8 @@ npm run dev
 |---|---|
 | `SUPABASE_URL` | Supabase → Project Settings → API → Project URL |
 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase → Project Settings → API → `service_role` / secret key. Solo servidor. |
-| `RESEND_API_KEY` | Resend → API Keys. Para el mail de confirmación (ver `MAILS.md`). |
+| `RESEND_API_KEY` | Resend → API Keys, con **Full access**. Mail de confirmación y reenvío de mails entrantes. |
+| `RESEND_WEBHOOK_SECRET` | Resend → Webhooks → el `whsec_…` del webhook `email.received` a `https://rodaclub.ar/api/resend/inbound`. |
 | `NEXT_PUBLIC_POSTHOG_KEY` | PostHog → Project settings → Project API key (`phc_…`) |
 | `NEXT_PUBLIC_POSTHOG_HOST` | `https://us.i.posthog.com` o `https://eu.i.posthog.com`, según la región del proyecto |
 | `NEXT_PUBLIC_SITE_URL` | Opcional. Por defecto el sitio usa `https://rodaclub.ar` (en `lib/site.ts`). |

@@ -85,7 +85,7 @@ Eventos: `page_view`, `tab_change` {tipo}, `form_start` {tipo} (primer campo toc
 - `/privacidad` y `/terminos` como páginas simples con texto placeholder `[TEXTO LEGAL PENDIENTE]`. El texto definitivo se redacta aparte (Ley 25.326 de datos personales). **No publicar el dominio final sin ese texto.**
 
 ## Variables de entorno
-`SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `NEXT_PUBLIC_POSTHOG_KEY`, `NEXT_PUBLIC_POSTHOG_HOST`. Nunca commitearlas; Gonzalo las carga en Vercel.
+`SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY` (Full access), `RESEND_WEBHOOK_SECRET`, `NEXT_PUBLIC_POSTHOG_KEY`, `NEXT_PUBLIC_POSTHOG_HOST`. Nunca commitearlas; Gonzalo las carga en Vercel.
 
 ## Mail de confirmación
 Especificación completa, copy aprobado y diseño en **`MAILS.md`** (diseños en `design/mails/`). Resumen de cómo está hecho:
@@ -97,6 +97,15 @@ Especificación completa, copy aprobado y diseño en **`MAILS.md`** (diseños en
 - Imágenes del mail en `public/mail/` (servidas desde `https://rodaclub.ar/mail/`): el logo y las piezas de `lib/mail/piezas.ts` (título, etiqueta del pase, franja lima con versión para celular, botón, números, pie). **Si cambia el copy de esas piezas hay que regenerarlas**: con `npm run dev` corriendo, `node scripts/mail-imagenes.mjs` (necesita Playwright con Chromium). Actualiza los PNG y `lib/mail/piezas.json`.
 - Vista previa sin mandar nada, solo con `npm run dev`: `/dev/mails?tipo=ciclista|lider|local` (agregar `&formato=texto` para el texto plano). `/dev/mail-piezas` muestra las piezas que se pasan a imagen. En producción esas rutas dan 404.
 - Si cambia el copy, se cambia en `lib/mail/content.ts` y en `MAILS.md`, y se regeneran las imágenes.
+
+## Reenvío de mails entrantes (@rodaclub.ar)
+Todo lo que llega a cualquier dirección @rodaclub.ar se reenvía a roda.club.app@gmail.com.
+- Resend recibe los mails (MX de rodaclub.ar) y avisa con un webhook (evento `email.received`) a `https://rodaclub.ar/api/resend/inbound` (sin `www`: los webhooks no siguen redirecciones).
+- El endpoint (`app/api/resend/inbound/route.ts`) verifica la firma con `RESEND_WEBHOOK_SECRET` (el `whsec_…` del webhook en Resend); si no es válida responde 400.
+- El reenvío (`lib/mail/inbound.ts`) baja el mail original y lo vuelve a mandar desde `"<Nombre> vía RODA" <hola@rodaclub.ar>` a roda.club.app@gmail.com, con el HTML/texto y los adjuntos, y con `reply_to` a quien escribió (así "Responder" en Gmail le contesta a esa persona). Es lo mismo que hace `resend.emails.receiving.forward` por dentro, pero ese método no permite `reply_to`.
+- Anti-loop: no se reenvía nada cuyo remitente sea @rodaclub.ar.
+- Si el reenvío falla, se loguea (`inbound: falló el reenvío …`) y se responde 200 igual, para que Resend no reintente en loop. El envío usa `idempotencyKey` por mail, así un reintento de Resend no lo duplica.
+- Necesita que `RESEND_API_KEY` sea **Full access**: con una key de Sending access no se puede leer el mail recibido.
 
 ## Dominio
 Pendiente. Preferido: rodaclub.com.ar (a confirmar en nic.ar); alternativa: rodaclub.app. Mientras tanto, usar la URL de Vercel.

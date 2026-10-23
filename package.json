@@ -12,6 +12,7 @@
     "@react-email/components": "^1.0.12",
     "@supabase/supabase-js": "^2.117.3",
     "next": "^16.4.2",
+    "postal-mime": "^2.7.6",
     "posthog-js": "^1.438.9",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
