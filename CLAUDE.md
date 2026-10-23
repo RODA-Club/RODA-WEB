@@ -74,6 +74,7 @@ Una sola tabla `leads`:
 ## Analítica (PostHog)
 Eventos: `page_view`, `tab_change` {tipo}, `form_start` {tipo} (primer campo tocado), `form_submit` {tipo, zona, utm_source, ref}, `form_error`. Que se pueda ver conversión por tipo y por `ref`.
 - Implementado en `lib/analytics.ts` (carga diferida, `persistence: 'memory'`, sin autocapture ni grabación de sesiones) y `components/Analytics.tsx`.
+- Además manda `$pageview` y `$pageleave` de PostHog, para que funcione su panel Web analytics (tiempo en la página, rebote, canales, dispositivos). Como no hay cookies, cada carga de la página cuenta como una visita nueva.
 - Los eventos van a `rodaclub.ar/ingest`, que `next.config.ts` reenvía a PostHog (región US). Es lo que recomienda PostHog para que no lo frenen los bloqueadores de anuncios.
 - PostHog descarta eventos de navegadores automatizados ("likely bot"): para probar con Playwright hay que ocultar `navigator.webdriver`.
 
