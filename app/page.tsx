@@ -36,7 +36,7 @@ export default function Home() {
           </a>
           <nav aria-label="Principal" className={styles.nav}>
             <a href="#lideres" className={styles.navLink}>Líderes</a>
-            <a href="#locales" className={styles.navLink}>Locales</a>
+            <a href="#locales" className={styles.navLink}>Negocios</a>
             <a href="#sumate" className={`btn btnPrimary ${styles.navCta}`}>Sumate</a>
           </nav>
         </div>

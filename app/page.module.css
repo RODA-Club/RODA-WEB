@@ -475,3 +475,21 @@
     height: 26px;
   }
 }
+
+/* Celulares muy chicos (320 px): un poco más compacto para no desbordar */
+@media (max-width: 350px) {
+  .navLink {
+    padding: 12px 6px;
+    font-size: 14px;
+  }
+
+  .navCta {
+    margin-left: 2px;
+    padding: 12px 12px;
+    font-size: 14px;
+  }
+
+  .logo {
+    height: 22px;
+  }
+}
