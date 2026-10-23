@@ -128,8 +128,14 @@ export default function Home() {
                 Sin costo durante todo el piloto. Los primeros locales entran antes de que abra la app.
               </p>
               <SumateLink tipo="local" className={`btn btnPrimary ${styles.ctaSmall}`}>
-                Sumar mi local
+                Sumar mi negocio
               </SumateLink>
+              <p className={styles.founderBrand}>
+                ¿Tenés una marca?{" "}
+                <SumateLink tipo="local" className={styles.founderBrandLink}>
+                  También podés sumarte.
+                </SumateLink>
+              </p>
             </div>
           </div>
         </section>

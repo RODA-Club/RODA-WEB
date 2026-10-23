@@ -332,6 +332,17 @@
   color: var(--hueso);
 }
 
+.founderBrand {
+  margin: 4px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--texto-2);
+}
+
+.founderBrandLink {
+  padding: 10px 0;
+}
+
 .ctaSmall {
   align-self: flex-start;
   margin-top: 6px;

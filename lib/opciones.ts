@@ -61,4 +61,5 @@ export const BICIS = [
 
 export const CANTIDADES = ["Menos de 5", "5 a 10", "11 a 20", "21 a 40", "Más de 40"] as const;
 
-export const LOCAL_TIPOS = ["Café, bar o restaurante", "Bicicletería", "Sponsor (hidratación, nutrición, indumentaria)", "Otro"] as const;
+// Tipos de negocio. En la base el tipo de alta sigue siendo "local".
+export const LOCAL_TIPOS = ["Café, bar o restaurante", "Bicicletería", "Marca o sponsor", "Otro"] as const;

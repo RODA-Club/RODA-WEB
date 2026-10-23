@@ -11,25 +11,25 @@ import { PICK_TIPO_EVENT, type Tipo } from "./tipo";
 const TABS: { id: Tipo; label: string }[] = [
   { id: "ciclista", label: "Ciclista" },
   { id: "lider", label: "Líder" },
-  { id: "local", label: "Local" },
+  { id: "local", label: "Negocio" },
 ];
 
 const SUBMIT_LABEL: Record<Tipo, string> = {
   ciclista: "Anotarme",
   lider: "Sumar mi grupo",
-  local: "Sumar mi local",
+  local: "Sumar mi negocio",
 };
 
 const ZONA_LABEL: Record<Tipo, string> = {
   ciclista: "¿Por dónde rodás?",
   lider: "¿Dónde sale el grupo?",
-  local: "Zona del local",
+  local: "Zona del negocio",
 };
 
 const DONE_TEXT: Record<Tipo, string> = {
   ciclista: "Te vamos a escribir cuando abra el piloto, con los grupos de tu zona y tu ritmo.",
   lider: "Te escribimos en estos días para cargar tu grupo como fundador antes de la apertura.",
-  local: "Te escribimos en estos días para contarte cómo funciona ser aliado fundador.",
+  local: "Te vamos a escribir para contarte cómo funciona ser aliado fundador.",
 };
 
 type Status = "idle" | "sending" | "error";
@@ -161,7 +161,7 @@ export function SignupForm() {
 
         {tipo === "local" && (
           <div className={styles.group}>
-            <Field label="Tipo de local" htmlFor="f-tipo-local">
+            <Field label="Tipo de negocio" htmlFor="f-tipo-local">
               <select id="f-tipo-local" name="local_tipo" required className={styles.control} defaultValue="">
                 <option value="">Elegí una opción</option>
                 {LOCAL_TIPOS.map((t) => (
@@ -169,10 +169,10 @@ export function SignupForm() {
                 ))}
               </select>
             </Field>
-            <Field label="Nombre del local" htmlFor="f-local">
+            <Field label="Nombre del negocio" htmlFor="f-local">
               <input id="f-local" name="local_nombre" type="text" required className={styles.control} />
             </Field>
-            <Field label="Dirección y localidad" htmlFor="f-dir">
+            <Field label="Dirección y localidad" optional htmlFor="f-dir">
               <input
                 id="f-dir"
                 name="local_direccion"
