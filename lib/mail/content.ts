@@ -6,6 +6,7 @@ import { ZONA_GRUPOS } from "@/lib/opciones";
 // versión en texto plano sale de este mismo contenido.
 
 export type MailContent = {
+  tipo: Lead["tipo"];
   subject: string;
   preheader: string;
   eyebrow: string;
@@ -74,6 +75,7 @@ export function mailContent(lead: Lead): MailContent {
 
   if (lead.tipo === "ciclista") {
     return {
+      tipo: "ciclista",
       subject: "Ya estás en la lista de RODA",
       preheader: "Te avisamos por acá cuando abra la app.",
       eyebrow: "Lista de espera",
@@ -106,6 +108,7 @@ export function mailContent(lead: Lead): MailContent {
 
   if (lead.tipo === "lider") {
     return {
+      tipo: "lider",
       subject: "Tu grupo ya está anotado en RODA",
       preheader: "Te vamos a escribir para sumarlo como grupo fundador.",
       eyebrow: "Grupos fundadores",
@@ -138,6 +141,7 @@ export function mailContent(lead: Lead): MailContent {
   }
 
   return {
+    tipo: "local",
     subject: "Tu negocio ya está anotado en RODA",
     preheader: "Te vamos a escribir para contarte cómo ser aliado fundador.",
     eyebrow: "Aliados fundadores",

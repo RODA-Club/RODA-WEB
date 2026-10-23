@@ -1,0 +1,78 @@
+{
+  "h1-ciclista": {
+    "width": 371,
+    "height": 106
+  },
+  "chip-ciclista": {
+    "width": 68,
+    "height": 27
+  },
+  "franja-ciclista": {
+    "width": 520,
+    "height": 107
+  },
+  "franja-ciclista-m": {
+    "width": 295,
+    "height": 172
+  },
+  "h1-lider": {
+    "width": 308,
+    "height": 159
+  },
+  "chip-lider": {
+    "width": 117,
+    "height": 27
+  },
+  "franja-lider": {
+    "width": 520,
+    "height": 133
+  },
+  "franja-lider-m": {
+    "width": 295,
+    "height": 194
+  },
+  "h1-local": {
+    "width": 370,
+    "height": 159
+  },
+  "chip-local": {
+    "width": 118,
+    "height": 27
+  },
+  "franja-local": {
+    "width": 520,
+    "height": 107
+  },
+  "franja-local-m": {
+    "width": 295,
+    "height": 172
+  },
+  "boton-ig": {
+    "width": 225,
+    "height": 50
+  },
+  "que-sigue": {
+    "width": 91,
+    "height": 18
+  },
+  "num-01": {
+    "width": 37,
+    "height": 27
+  },
+  "num-02": {
+    "width": 37,
+    "height": 27
+  },
+  "num-03": {
+    "width": 37,
+    "height": 27
+  },
+  "pie-tagline": {
+    "width": 281,
+    "height": 18
+  },
+  "pie-instagram": {
+    "width": 57,
+    "height": 20
+  }
+}
