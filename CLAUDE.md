@@ -85,7 +85,17 @@ Eventos: `page_view`, `tab_change` {tipo}, `form_start` {tipo} (primer campo toc
 - `/privacidad` y `/terminos` como páginas simples con texto placeholder `[TEXTO LEGAL PENDIENTE]`. El texto definitivo se redacta aparte (Ley 25.326 de datos personales). **No publicar el dominio final sin ese texto.**
 
 ## Variables de entorno
-`SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `NEXT_PUBLIC_POSTHOG_KEY`, `NEXT_PUBLIC_POSTHOG_HOST`. Nunca commitearlas; Gonzalo las carga en Vercel.
+`SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `NEXT_PUBLIC_POSTHOG_KEY`, `NEXT_PUBLIC_POSTHOG_HOST`. Nunca commitearlas; Gonzalo las carga en Vercel.
+
+## Mail de confirmación
+Especificación completa, copy aprobado y diseño en **`MAILS.md`** (diseños en `design/mails/`). Resumen de cómo está hecho:
+- En la web la tercera puerta se llama **"Negocio"**; en la base el `tipo` sigue siendo `local`.
+- `/api/leads` manda el mail con Resend (`RESEND_API_KEY`) desde `RODA <hola@rodaclub.ar>`, `reply_to` roda.club.app@gmail.com. Solo en altas nuevas (no cuando el mismo mail + tipo se vuelve a anotar), con `after()` de Next: el envío corre después de responder y si falla solo se loguea (`mail: falló…`), el alta nunca falla por el mail.
+- Si el tipo es `lider` o `local`, manda además un aviso interno en texto a roda.club.app@gmail.com con todos los datos ("Nuevo líder: …" / "Nuevo negocio: …"), con `reply_to` al mail de la persona.
+- Copy y valores cortos del pase: `lib/mail/content.ts` (una plantilla por tipo + versión en texto plano). Layout HTML con React Email: `emails/Confirmacion.tsx`. Envío: `lib/mail/send.tsx`.
+- Imágenes del mail (logo 2x y sobre) en `public/mail/`, servidas desde `https://rodaclub.ar/mail/`.
+- Vista previa sin mandar nada, solo con `npm run dev`: `/dev/mails?tipo=ciclista|lider|local` (agregar `&formato=texto` para el texto plano). En producción esa ruta da 404.
+- Si cambia el copy, se cambia en `lib/mail/content.ts` y en `MAILS.md`.
 
 ## Dominio
 Pendiente. Preferido: rodaclub.com.ar (a confirmar en nic.ar); alternativa: rodaclub.app. Mientras tanto, usar la URL de Vercel.

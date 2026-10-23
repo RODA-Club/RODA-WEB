@@ -1,5 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
+import { after } from "next/server";
 import { leadSchema, toRow } from "@/lib/leads";
+import { sendLeadEmails } from "@/lib/mail/send";
 
 // Mínimo de tiempo entre que carga la página y llega el envío (anti-bots).
 const MIN_ELAPSED_MS = 2000;
@@ -47,6 +49,7 @@ export async function POST(request: Request) {
   // tiene un índice único sobre (lower(email), tipo), que PostgREST no acepta
   // como onConflict, así que el upsert va en dos pasos. El mail ya llega en
   // minúsculas desde la validación.
+  const esAltaNueva = !error;
   if (error?.code === "23505") {
     ({ error } = await supabase.from("leads").update(row).eq("email", row.email).eq("tipo", row.tipo));
   }
@@ -55,6 +58,10 @@ export async function POST(request: Request) {
     console.error("leads: error de Supabase", error.code, error.message);
     return Response.json({ ok: false, error: "server" }, { status: 500 });
   }
+
+  // Mail de confirmación solo en altas nuevas, después de responder: si falla,
+  // el alta ya está guardada y la persona ve igual "Ya estás adentro.".
+  if (esAltaNueva) after(() => sendLeadEmails(parsed.data));
 
   return Response.json({ ok: true });
 }
