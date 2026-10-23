@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function Privacidad() {
   return (
-    <LegalPage title="Política de privacidad">
+    <LegalPage title="Política de privacidad" fecha={LEGAL.fechaPrivacidad}>
       <p>
         Esta política explica qué datos junta RODA en este sitio, para qué los usa y qué podés hacer con ellos. La
         escribimos corta y clara a propósito.
@@ -42,8 +42,9 @@ export default function Privacidad() {
       </ul>
       <p>
         También guardamos desde qué link llegaste (por ejemplo, si viniste desde Instagram o desde el código QR de una
-        bicicletería) y la fecha en que aceptaste esta política. Para entender cómo se usa el sitio medimos visitas de
-        forma agregada, sin cookies y sin identificarte.
+        bicicletería) y la fecha en que aceptaste esta política. Para entender cómo se usa el sitio medimos visitas y
+        grabamos de forma anónima cómo se recorre la página (clics y desplazamiento), sin cookies, sin identificarte y
+        sin guardar lo que escribís en el formulario.
       </p>
       <p>No te pedimos datos sensibles ni los necesitamos.</p>
 

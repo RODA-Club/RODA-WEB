@@ -4,7 +4,15 @@ import { Footer } from "./Footer";
 import styles from "./LegalPage.module.css";
 import { Logo } from "./Logo";
 
-export function LegalPage({ title, children }: { title: string; children: React.ReactNode }) {
+export function LegalPage({
+  title,
+  fecha = LEGAL.fecha,
+  children,
+}: {
+  title: string;
+  fecha?: string;
+  children: React.ReactNode;
+}) {
   return (
     <>
       <header className={styles.header}>
@@ -19,7 +27,7 @@ export function LegalPage({ title, children }: { title: string; children: React.
       </header>
       <main className={styles.main}>
         <h1 className="h2">{title}</h1>
-        <p className={styles.updated}>Última actualización: {LEGAL.fecha}</p>
+        <p className={styles.updated}>Última actualización: {fecha}</p>
         <div className={styles.body}>{children}</div>
       </main>
       <Footer />

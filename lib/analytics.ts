@@ -25,7 +25,10 @@ export function initAnalytics(superProps: Record<string, string | null>) {
         autocapture: false,
         capture_pageview: true,
         capture_pageleave: true,
-        disable_session_recording: true,
+        // Grabación de visitas para ver dónde se traba la gente. Todo lo que se
+        // escribe en el formulario sale enmascarado (política de privacidad).
+        disable_session_recording: false,
+        session_recording: { maskAllInputs: true },
         person_profiles: "identified_only",
       });
       // Todos los eventos llevan el canal de entrada, para cortar por ref/UTM.
