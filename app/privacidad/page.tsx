@@ -53,6 +53,11 @@ export default function Privacidad() {
         <li>Avisarte cuando abra RODA y contarte novedades del lanzamiento.</li>
         <li>Si organizás un grupo o tenés un local, contactarte para sumarte como fundador.</li>
         <li>Saber en qué zonas hay más interés y qué canales funcionan, para decidir dónde arrancar.</li>
+        <li>
+          Solo si tildaste la casilla de novedades: mandarte novedades de RODA, como salidas, eventos y beneficios de
+          locales aliados. Es opcional, y podés darte de baja cuando quieras respondiendo cualquiera de esos mails o
+          escribiéndonos.
+        </li>
       </ul>
       <p>
         No vendemos ni alquilamos tus datos, y no los usamos para nada distinto de esto sin pedirte permiso antes.

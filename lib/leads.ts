@@ -18,6 +18,8 @@ const base = {
   whatsapp: opt(40),
   zona: z.enum(ZONAS),
   consentimiento: z.literal(true),
+  // Casilla opcional para recibir novedades (newsletter); destildada por defecto.
+  novedades: z.boolean().default(false),
 
   utm_source: opt(200),
   utm_medium: opt(200),
@@ -71,6 +73,9 @@ export function toRow(lead: Lead) {
     consentimiento: lead.consentimiento,
     consentimiento_at: new Date().toISOString(),
     consentimiento_version: CONSENTIMIENTO_VERSION,
+    // Vale la última elección: si se vuelve a anotar sin tildarla, queda en false.
+    acepta_novedades: lead.novedades,
+    novedades_at: lead.novedades ? new Date().toISOString() : null,
     tipo_bici: lead.tipo !== "local" ? lead.tipo_bici : null,
     ritmo: lead.tipo === "ciclista" ? lead.ritmo : null,
     grupo_nombre: lead.tipo === "lider" ? lead.grupo_nombre : null,

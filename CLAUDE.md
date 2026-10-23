@@ -56,6 +56,8 @@ Una sola tabla `leads`:
 | local_nombre | text | local |
 | local_direccion | text | local |
 | consentimiento | boolean not null | debe ser true |
+| acepta_novedades | boolean not null default false | casilla opcional de newsletter |
+| novedades_at | timestamptz | cuándo la tildó (null si no) |
 | utm_source, utm_medium, utm_campaign, utm_content, utm_term | text | de la URL de entrada |
 | ref | text | parámetro `?ref=` (ej. `?ref=giant-delta` para el QR de cada local) |
 | referrer | text | document.referrer |

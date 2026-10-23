@@ -26,6 +26,7 @@ function avisoInterno(lead: Lead) {
     linea("Mail", lead.email),
     linea("WhatsApp", lead.whatsapp),
     linea("Zona", lead.zona),
+    linea("Acepta novedades", lead.novedades ? "sí" : "no"),
   ];
   const origen = [
     "",

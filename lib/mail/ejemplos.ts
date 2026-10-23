@@ -7,6 +7,7 @@ const base = {
   email: "prueba@rodaclub.ar",
   whatsapp: null,
   consentimiento: true as const,
+  novedades: false,
   utm_source: "instagram",
   utm_medium: "bio",
   utm_campaign: null,

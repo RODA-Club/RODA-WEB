@@ -80,6 +80,7 @@ export function SignupForm() {
       ...attribution,
       tipo,
       consentimiento: fd.get("consentimiento") === "on",
+      novedades: fd.get("novedades") === "on",
       elapsed_ms: Math.round(performance.now()),
     };
 
@@ -274,6 +275,14 @@ export function SignupForm() {
             Acepto que RODA guarde estos datos y me contacte por mail o WhatsApp sobre el lanzamiento. Entiendo
             que se alojan en servicios que pueden estar fuera de Argentina.{" "}
             <Link href="/privacidad">Política de privacidad</Link>
+          </span>
+        </label>
+
+        <label htmlFor="f-novedades" className={styles.consent}>
+          <input id="f-novedades" name="novedades" type="checkbox" className={styles.check} />
+          <span>
+            Quiero recibir novedades de RODA: salidas, eventos y beneficios de locales aliados. Me puedo dar de baja
+            cuando quiera.
           </span>
         </label>
 
