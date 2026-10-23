@@ -2,7 +2,8 @@ import type { PostHog } from "posthog-js";
 
 // PostHog sin cookies ni localStorage (persistence: "memory"), así no hace
 // falta banner. Se carga diferido para no pesar en la primera carga. Si no hay
-// key configurada, los eventos se descartan.
+// key configurada, los eventos se descartan. Los eventos van a /ingest, que
+// next.config.ts reenvía a PostHog (evita los bloqueadores de anuncios).
 
 let client: Promise<PostHog | null> | null = null;
 
@@ -16,7 +17,8 @@ export function initAnalytics(superProps: Record<string, string | null>) {
   client = import("posthog-js")
     .then(({ default: posthog }) => {
       posthog.init(key, {
-        api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com",
+        api_host: "/ingest",
+        ui_host: "https://us.posthog.com",
         persistence: "memory",
         autocapture: false,
         capture_pageview: false,
