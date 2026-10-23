@@ -42,8 +42,17 @@ export async function POST(request: Request) {
   const supabase = createClient(url, key, {
     auth: { persistSession: false, autoRefreshToken: false },
   });
-  const row = toRow(parsed.data);
+  let row: Partial<ReturnType<typeof toRow>> & { email: string; tipo: string } = toRow(parsed.data);
   let { error } = await supabase.from("leads").insert(row);
+
+  // Si la base todavía no tiene las columnas de novedades (migración 0002),
+  // el alta se guarda igual sin ese dato: el formulario no puede fallar por eso.
+  if (error?.code === "PGRST204") {
+    console.error("leads: falta la migración 0002 (acepta_novedades); se guarda sin novedades");
+    const { acepta_novedades: _a, novedades_at: _n, ...sinNovedades } = row;
+    row = sinNovedades;
+    ({ error } = await supabase.from("leads").insert(row));
+  }
 
   // Mismo mail y tipo ya anotado: se actualiza en vez de duplicar. La tabla
   // tiene un índice único sobre (lower(email), tipo), que PostgREST no acepta
