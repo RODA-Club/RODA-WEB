@@ -23,7 +23,7 @@ export const EJEMPLOS: Record<string, Lead> = {
     tipo: "ciclista",
     zona: "Vicente López / San Isidro",
     tipo_bici: "Ruta (manubrio curvo, cubiertas finas)",
-    ritmo: "Moderado (25–30 km/h)",
+    ritmo: "Intermedio · 25 a 30 km/h",
   },
   lider: {
     ...base,
@@ -32,7 +32,7 @@ export const EJEMPLOS: Record<string, Lead> = {
     tipo_bici: "Ruta (manubrio curvo, cubiertas finas)",
     grupo_nombre: "Los del Vial",
     grupo_cantidad: "11 a 20",
-    grupo_ritmo: "Intenso (más de 30 km/h)",
+    grupo_ritmo: "Fuerte · más de 30 km/h",
     grupo_instagram: "@losdelvial",
   },
   local: {

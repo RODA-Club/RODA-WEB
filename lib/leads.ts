@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { CONSENTIMIENTO_VERSION } from "./legal";
-import { BICIS, CANTIDADES, LOCAL_TIPOS, RITMOS_CICLISTA, RITMOS_GRUPO, ZONAS } from "./opciones";
+import { BICIS, CANTIDADES, LOCAL_TIPOS, RITMOS_CICLISTA, RITMOS_GRUPO, RITMOS_VIEJOS, ZONAS } from "./opciones";
 
 // Texto requerido / opcional. Los opcionales vacíos se guardan como null.
 const req = (max: number) => z.string().trim().min(1).max(max);
@@ -11,6 +11,10 @@ const opt = (max: number) =>
     .max(max)
     .nullish()
     .transform((v) => v || null);
+
+// Ritmo con la escala anterior → escala actual.
+const ritmo = <T extends z.ZodType>(schema: T) =>
+  z.preprocess((v) => (typeof v === "string" && RITMOS_VIEJOS[v]) || v, schema);
 
 const base = {
   nombre: req(120),
@@ -35,7 +39,7 @@ export const leadSchema = z.discriminatedUnion("tipo", [
     tipo: z.literal("ciclista"),
     ...base,
     tipo_bici: z.enum(BICIS),
-    ritmo: z.enum(RITMOS_CICLISTA),
+    ritmo: ritmo(z.enum(RITMOS_CICLISTA)),
   }),
   z.object({
     tipo: z.literal("lider"),
@@ -43,10 +47,12 @@ export const leadSchema = z.discriminatedUnion("tipo", [
     tipo_bici: z.enum(BICIS),
     grupo_nombre: req(120),
     grupo_cantidad: z.enum(CANTIDADES),
-    grupo_ritmo: z
-      .union([z.enum(RITMOS_GRUPO), z.literal("")])
-      .nullish()
-      .transform((v) => v || null),
+    grupo_ritmo: ritmo(
+      z
+        .union([z.enum(RITMOS_GRUPO), z.literal("")])
+        .nullish()
+        .transform((v) => v || null),
+    ),
     grupo_instagram: opt(80),
   }),
   z.object({

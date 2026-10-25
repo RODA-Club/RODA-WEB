@@ -45,7 +45,15 @@ export const ZONA_GRUPOS = [
 
 export const ZONAS = ZONA_GRUPOS.flatMap((g) => g.zonas) as [string, ...string[]];
 
-const RITMOS = ["Chill (menos de 25 km/h)", "Moderado (25–30 km/h)", "Intenso (más de 30 km/h)"] as const;
+const RITMOS = ["Tranqui · menos de 25 km/h", "Intermedio · 25 a 30 km/h", "Fuerte · más de 30 km/h"] as const;
+
+// Valores de la escala anterior (Chill / Moderado / Intenso). Si alguien envía
+// el formulario desde una página vieja abierta, se traducen a los nuevos.
+export const RITMOS_VIEJOS: Record<string, (typeof RITMOS)[number]> = {
+  "Chill (menos de 25 km/h)": "Tranqui · menos de 25 km/h",
+  "Moderado (25–30 km/h)": "Intermedio · 25 a 30 km/h",
+  "Intenso (más de 30 km/h)": "Fuerte · más de 30 km/h",
+};
 
 export const RITMOS_CICLISTA = [...RITMOS, "No sé todavía"] as const;
 

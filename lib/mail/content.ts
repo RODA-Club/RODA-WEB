@@ -43,7 +43,7 @@ export function biciCorta(bici: string | null | undefined): string {
 }
 
 export function ritmoCorto(ritmo: string | null | undefined): string {
-  for (const r of ["Chill", "Moderado", "Intenso", "Varía"]) if (ritmo?.startsWith(r)) return r;
+  for (const r of ["Tranqui", "Intermedio", "Fuerte", "Varía"]) if (ritmo?.startsWith(r)) return r;
   return "Por definir";
 }
 

@@ -35,7 +35,7 @@ Motivo: la tercera puerta también es para marcas y sponsors, no solo para café
 
 ### Valores cortos para el "pase" (las cajitas no entran textos largos)
 - Bici: Ruta · Gravel · MTB · Urbana · Sin bici
-- Ritmo: Chill · Moderado · Intenso · Varía · Por definir
+- Ritmo: Tranqui · Intermedio · Fuerte · Varía · Por definir
 - Tipo de negocio: Café/bar · Bicicletería · Marca · Otro
 - Zona: usar una versión corta (ej. "Vicente López", "San Isidro", "Tigre", "CABA norte", "Zona oeste").
 
